@@ -5,9 +5,9 @@
   <subtitle>allnice&#39;s blog</subtitle>
   <link href="/blog/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/blog/"/>
+  <link href="http://yoursite.com/"/>
   <updated>2019-08-31T15:10:10.523Z</updated>
-  <id>http://yoursite.com/blog/</id>
+  <id>http://yoursite.com/</id>
   
   <author>
     <name>yw</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>markdown语法</title>
-    <link href="http://yoursite.com/blog/2019/08/31/markdown-yu-fa/"/>
-    <id>http://yoursite.com/blog/2019/08/31/markdown-yu-fa/</id>
+    <link href="http://yoursite.com/2019/08/31/markdown-yu-fa/"/>
+    <id>http://yoursite.com/2019/08/31/markdown-yu-fa/</id>
     <published>2019-08-31T09:44:32.000Z</published>
     <updated>2019-08-31T15:10:10.523Z</updated>
     
@@ -36,14 +36,14 @@
     </summary>
     
     
-      <category term="Markdown" scheme="http://yoursite.com/blog/tags/Markdown/"/>
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/blog/2019/08/31/hello-world/"/>
-    <id>http://yoursite.com/blog/2019/08/31/hello-world/</id>
+    <link href="http://yoursite.com/2019/08/31/hello-world/"/>
+    <id>http://yoursite.com/2019/08/31/hello-world/</id>
     <published>2019-08-31T06:02:59.841Z</published>
     <updated>2019-08-31T09:30:25.884Z</updated>
     
