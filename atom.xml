@@ -3,11 +3,11 @@
   <title>allnice</title>
   
   <subtitle>allnice&#39;s blog</subtitle>
-  <link href="/blog/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
-  <link href="https://www.allnice.cf/blog/"/>
+  <link href="https://www.allnice.cf/"/>
   <updated>2019-08-31T15:10:10.523Z</updated>
-  <id>https://www.allnice.cf/blog/</id>
+  <id>https://www.allnice.cf/</id>
   
   <author>
     <name>yw</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>markdown语法</title>
-    <link href="https://www.allnice.cf/blog/2019/08/31/markdown-yu-fa/"/>
-    <id>https://www.allnice.cf/blog/2019/08/31/markdown-yu-fa/</id>
+    <link href="https://www.allnice.cf/2019/08/31/markdown-yu-fa/"/>
+    <id>https://www.allnice.cf/2019/08/31/markdown-yu-fa/</id>
     <published>2019-08-31T09:44:32.000Z</published>
     <updated>2019-08-31T15:10:10.523Z</updated>
     
@@ -36,14 +36,14 @@
     </summary>
     
     
-      <category term="Markdown" scheme="https://www.allnice.cf/blog/tags/Markdown/"/>
+      <category term="Markdown" scheme="https://www.allnice.cf/tags/Markdown/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://www.allnice.cf/blog/2019/08/31/hello-world/"/>
-    <id>https://www.allnice.cf/blog/2019/08/31/hello-world/</id>
+    <link href="https://www.allnice.cf/2019/08/31/hello-world/"/>
+    <id>https://www.allnice.cf/2019/08/31/hello-world/</id>
     <published>2019-08-31T06:02:59.841Z</published>
     <updated>2019-08-31T09:30:25.884Z</updated>
     
