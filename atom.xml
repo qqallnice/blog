@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.allnice.ml/"/>
-  <updated>2019-09-03T08:44:07.750Z</updated>
+  <updated>2019-09-03T09:39:27.366Z</updated>
   <id>https://www.allnice.ml/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo基本命令</title>
+    <link href="https://www.allnice.ml/2019/09/03/hexo-ji-ben-ming-ling/"/>
+    <id>https://www.allnice.ml/2019/09/03/hexo-ji-ben-ming-ling/</id>
+    <published>2019-09-03T08:58:21.000Z</published>
+    <updated>2019-09-03T09:39:27.366Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;init&quot;&gt;&lt;a href=&quot;#init&quot; class=&quot;headerlink&quot; title=&quot;init&quot;&gt;&lt;/a&gt;init&lt;/h2&gt;&lt;p&gt;&lt;code&gt;$ hexo init [folder]&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;new&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="https://www.allnice.ml/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>markdown语法</title>
@@ -37,28 +62,6 @@
     
     
       <category term="Markdown" scheme="https://www.allnice.ml/tags/Markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://www.allnice.ml/2019/08/31/hello-world/"/>
-    <id>https://www.allnice.ml/2019/08/31/hello-world/</id>
-    <published>2019-08-31T06:02:59.841Z</published>
-    <updated>2019-08-31T09:30:25.884Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
-    
     
   </entry>
   
