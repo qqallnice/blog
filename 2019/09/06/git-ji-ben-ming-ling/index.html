@@ -7,7 +7,7 @@
     <meta name="keywords" content="git基本命令, it, java, js">
     <meta name="description" content="git init初始化本地仓库
 git config配置git全局信息git config --global user.name &#39;name&#39;git config --global user.email &#39;email&#39;
-git add添加指">
+git add$ g">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -377,9 +377,13 @@ git add添加指">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/git/" target="_blank">
+                                <span class="chip bg-color">git</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -397,7 +401,7 @@ git add添加指">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        293
+                        302
                     </div>
                     
 
@@ -422,17 +426,17 @@ git add添加指">
             <div id="articleContent">
                 <h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2><p>初始化本地仓库</p>
 <h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>配置git全局信息<br><code>git config --global user.name 'name'</code><br><code>git config --global user.email 'email'</code></p>
-<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><p>添加指定文件：<br><code>git add &lt;filename&gt;</code><br>添加目录下所有文件<br><code>git add .</code></p>
-<h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h2><p>删除添加的指定文件<br><code>git rm --cached &lt;filename&gt;</code></p>
+<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><p><code>$ git add &lt;filename&gt;</code><br>添加指定文件：<br><code>$ git add .</code><br>添加目录下所有文件</p>
+<h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h2><p><code>$ git rm --cached &lt;filename&gt;</code><br>删除添加的指定文件</p>
 <h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><p>查看添加的文件队列</p>
-<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><p>默认会弹出编辑日志框<br><code>git commit -m 'log'</code><br>直接指定日志内容提交</p>
-<h2 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h2><p><code>git remote add &lt;SSH URO or HTTP URL&gt;</code><br><code>git remote add origin remoteUrl</code><br>添加远程仓库<br><code>git remote -v</code><br>查看绑定的远程仓库<br><code>git remote remove &lt;remoteName&gt;</code><br><code>git remote remove origin</code></p>
-<h2 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h2><p><code>git push -u origin master</code><br>推送项目到远程仓库</p>
-<h2 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h2><p>从远程仓库拉取项目（同步）<br><code>git pull origin master --allow-unrelated-histories</code><br>将本地仓库和远程仓库进行关联</p>
+<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><p>默认会弹出编辑日志框<br><code>$ git commit -m 'log'</code><br>直接指定日志内容提交</p>
+<h2 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h2><p><code>$ git remote add &lt;SSH URO or HTTP URL&gt;</code><br><code>$ git remote add origin remoteUrl</code><br>添加远程仓库<br><code>$ git remote -v</code><br>查看绑定的远程仓库<br><code>$ git remote remove &lt;remoteName&gt;</code><br><code>$ git remote remove origin</code></p>
+<h2 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h2><p><code>$ git push -u origin master</code><br>推送项目到远程仓库</p>
+<h2 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h2><p>从远程仓库拉取项目（同步）<br><code>$ git pull origin master --allow-unrelated-histories</code><br>将本地仓库和远程仓库进行关联</p>
 <h2 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h2><p>从远程仓库拉取项目（从无到有）</p>
-<h2 id="git-branch"><a href="#git-branch" class="headerlink" title="git branch"></a>git branch</h2><p><code>git branch test</code><br>创建分支：test</p>
-<h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><p><code>git checkout test</code><br>切换到test分支</p>
-<h2 id="git-merge"><a href="#git-merge" class="headerlink" title="git merge"></a>git merge</h2><p><code>git merge test</code><br>合并test分支内容到主干</p>
+<h2 id="git-branch"><a href="#git-branch" class="headerlink" title="git branch"></a>git branch</h2><p><code>$ git branch test</code><br>创建分支：test</p>
+<h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><p><code>$ git checkout test</code><br>切换到test分支</p>
+<h2 id="git-merge"><a href="#git-merge" class="headerlink" title="git merge"></a>git merge</h2><p><code>$ git merge test</code><br>合并test分支内容到主干</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -507,7 +511,7 @@ git add添加指">
                         
                             git init初始化本地仓库
 git config配置git全局信息git config --global user.name 'name'git config --global user.email 'email'
-git add添加指
+git add$ g
                         
                     </div>
                     <div class="publish-info">
@@ -523,6 +527,14 @@ git add添加指
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/git/" target="_blank">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -688,7 +700,7 @@ layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">839</span>
+                <span class="white-color">848</span>
             
 
             
