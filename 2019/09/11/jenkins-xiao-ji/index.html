@@ -4,11 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo基本命令, it, java, js">
-    <meta name="description" content="init$ hexo init [folder]
-new$ hexo new [layout] &amp;lt;title&amp;gt;
+    <meta name="keywords" content="jenkins小记, it, java, js">
+    <meta name="description" content="jenkins概念持续集成、持续部署、持续交付更有利于迭代开发
+好处
+降低风险
+减少很多重复性工作
 
-layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件名)，该目录下存放的是模板文件">
+jenkins+svn
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+      ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +20,7 @@ layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hexo基本命令 | allnice</title>
+    <title>jenkins小记 | allnice</title>
     <link rel="icon" type="image/png" href="/sitefavicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -263,13 +267,13 @@ layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        hexo基本命令
+                        jenkins小记
                     </div>
                 </div>
             </div>
@@ -380,8 +384,8 @@ layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件�
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo/" target="_blank">
-                                <span class="chip bg-color">hexo</span>
+                            <a href="/tags/jenkisn/" target="_blank">
+                                <span class="chip bg-color">jenkisn</span>
                             </a>
                         
                     </div>
@@ -395,14 +399,14 @@ layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件�
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-03
+                    2019-09-11
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        205
+                        92
                     </div>
                     
 
@@ -425,48 +429,12 @@ layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="init"><a href="#init" class="headerlink" title="init"></a>init</h2><p><code>$ hexo init [folder]</code></p>
-<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><p><code>$ hexo new [layout] &lt;title&gt;</code></p>
-<ul>
-<li>layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件名)，该目录下存放的是模板文件</li>
+                <h2 id="jenkins概念"><a href="#jenkins概念" class="headerlink" title="jenkins概念"></a>jenkins概念</h2><h3 id="持续集成、持续部署、持续交付"><a href="#持续集成、持续部署、持续交付" class="headerlink" title="持续集成、持续部署、持续交付"></a>持续集成、持续部署、持续交付</h3><p>更有利于迭代开发</p>
+<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><ul>
+<li>降低风险</li>
+<li>减少很多重复性工作</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th align="left">布局</th>
-<th align="left">路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">draft</td>
-<td align="left">source/_draft</td>
-</tr>
-<tr>
-<td align="left">page</td>
-<td align="left">source</td>
-</tr>
-<tr>
-<td align="left">post</td>
-<td align="left">source/_posts</td>
-</tr>
-</tbody></table>
-<ul>
-<li>hexo创建文件会根据这些模板文件进行文件生成</li>
-</ul>
-<h2 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h2><p><code>$ hexo publish [layout] &lt;title&gt;</code><br>发布草稿</p>
-<h2 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h2><p><code>$ hexo generate</code><br>可以简写为:<br><code>$ hexo g</code><br>生成静态文件</p>
-<h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><p><code>$ hexo server --debug --config local.yml</code></p>
-<ul>
-<li>-p,–post 重设端口</li>
-<li>–debug   调试模式</li>
-<li>–config  指定自定义配置文件启动</li>
-</ul>
-<h2 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h2><p><code>$ hexo deploy</code></p>
-<ul>
-<li>-g, –generate 部署前先生成静态文件</li>
-</ul>
-<h2 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h2><p><code>$ hexo clean</code></p>
-<script>
+<h2 id="jenkins-svn"><a href="#jenkins-svn" class="headerlink" title="jenkins+svn"></a>jenkins+svn</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -525,6 +493,57 @@ layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件�
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2019/10/16/nginx-xiao-ji/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="nginx小记">
+                        
+                        <span class="card-title">nginx小记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            配置nginx.conf#定义Nginx运行的用户和用户组
+user www www; 
+
+#nginx进程数，通常设置成和cpu的数量相等
+worker_processes 4; 
+
+#全局错误日志定义类型，[debug | info |
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            yw
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/nginx/" target="_blank">
+                        <span class="chip bg-color">nginx</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2019/09/06/git-ji-ben-ming-ling/">
                     <div class="card-image">
                         
@@ -543,9 +562,9 @@ git ad
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -559,70 +578,6 @@ git ad
                     
                     <a href="/tags/git/" target="_blank">
                         <span class="chip bg-color">git</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/08/31/markdown-yu-fa/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="markdown语法">
-                        
-                        <span class="card-title">markdown语法</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            二级标题代码
-## 二级标题
-三级标题代码
-### 三级标题
-有序列表
-first
-second
-third
-
-代码
-1. first
-2. second
-3. third
-无序列表
-first
-second
-third
-
-代码
-- fir
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-31
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            yw
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Markdown/" target="_blank">
-                        <span class="chip bg-color">Markdown</span>
                     </a>
                     
                 </div>

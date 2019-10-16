@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.allnice.ml/"/>
-  <updated>2019-09-06T09:55:33.440Z</updated>
+  <updated>2019-10-16T08:39:04.639Z</updated>
   <id>https://www.allnice.ml/</id>
   
   <author>
@@ -17,11 +17,59 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>nginx小记</title>
+    <link href="https://www.allnice.ml/2019/10/16/nginx-xiao-ji/"/>
+    <id>https://www.allnice.ml/2019/10/16/nginx-xiao-ji/</id>
+    <published>2019-10-16T07:49:06.000Z</published>
+    <updated>2019-10-16T08:39:04.639Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;配置nginx-conf&quot;&gt;&lt;a href=&quot;#配置nginx-conf&quot; class=&quot;headerlink&quot; title=&quot;配置nginx.conf&quot;&gt;&lt;/a&gt;配置nginx.conf&lt;/h2&gt;&lt;pre class=&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="https://www.allnice.ml/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jenkins小记</title>
+    <link href="https://www.allnice.ml/2019/09/11/jenkins-xiao-ji/"/>
+    <id>https://www.allnice.ml/2019/09/11/jenkins-xiao-ji/</id>
+    <published>2019-09-11T03:43:49.000Z</published>
+    <updated>2019-09-11T06:22:22.099Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;jenkins概念&quot;&gt;&lt;a href=&quot;#jenkins概念&quot; class=&quot;headerlink&quot; title=&quot;jenkins概念&quot;&gt;&lt;/a&gt;jenkins概念&lt;/h2&gt;&lt;h3 id=&quot;持续集成、持续部署、持续交付&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="jenkisn" scheme="https://www.allnice.ml/tags/jenkisn/"/>
+    
+  </entry>
+  
+  <entry>
     <title>git基本命令</title>
     <link href="https://www.allnice.ml/2019/09/06/git-ji-ben-ming-ling/"/>
     <id>https://www.allnice.ml/2019/09/06/git-ji-ben-ming-ling/</id>
     <published>2019-09-06T09:37:25.000Z</published>
-    <updated>2019-09-06T09:55:33.440Z</updated>
+    <updated>2019-09-07T01:41:09.204Z</updated>
     
     <summary type="html">
     
