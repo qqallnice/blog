@@ -260,6 +260,19 @@ springc">
 </header>
 
 
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -378,9 +391,13 @@ springc">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/micro-service/" target="_blank">
+                                <span class="chip bg-color">micro service</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -398,7 +415,7 @@ springc">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        170
+                        172
                     </div>
                     
 
@@ -428,7 +445,7 @@ springc">
 <h2 id="验证码功能"><a href="#验证码功能" class="headerlink" title="验证码功能"></a>验证码功能</h2><ul>
 <li>页面通过url请求服务器生成验证码，同时通过redis进行持久化<h2 id="swagger"><a href="#swagger" class="headerlink" title="swagger"></a>swagger</h2>restful API接口框架</li>
 <li>自动生成接口文档</li>
-<li>接口测试</li>
+<li>接口测试<h2 id="xxl-job"><a href="#xxl-job" class="headerlink" title="xxl-job"></a>xxl-job</h2></li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -519,6 +536,14 @@ springc">
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/oauth2/" target="_blank">
+                        <span class="chip bg-color">oauth2</span>
+                    </a>
+                    
                 </div>
                 
             </div>

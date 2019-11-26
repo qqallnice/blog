@@ -12,6 +12,12 @@
       
       
       
+        <tags>
+            
+            <tag> 考证 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -25,6 +31,12 @@
       
       
       
+        <tags>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -37,6 +49,12 @@
         <content type="html"><![CDATA[<h2 id="java特性"><a href="#java特性" class="headerlink" title="java特性"></a>java特性</h2><ol><li>封装</li><li>抽象</li><li>继承</li><li>多态<h2 id="设计模式原则"><a href="#设计模式原则" class="headerlink" title="设计模式原则"></a>设计模式原则</h2></li><li>单一职责</li></ol><ul><li>一个对象的改变只由一个原因倒置</li><li>不同逻辑的接口分割成单一逻辑接口</li><li>大到接口、中到实现类、小到方法尽量遵守</li></ul><ol start="2"><li>里氏替换</li></ol><ul><li>子类可以拓展父类的功能，但是不能变更</li><li>子类相比父类方法需要多（入参类型更广）入（方法入参）少（出参类型更窄）出（方法出参）的 </li></ul><ol start="3"><li>依赖倒置</li></ol><ul><li>高层组件：调用端（客户端）</li><li>底层组件：具体实现类</li><li>不能让高层组件依赖低层组件，两者都应依赖于抽象</li></ul><ol start="4"><li>接口隔离</li></ol><ul><li>依赖于单一职责原则，接口原子化</li><li>单一逻辑接口由于权限不同需要继续细化</li></ul><ol start="5"><li>迪米特</li></ol><ul><li>最小知识原则，尽量减少使用public接口</li><li>只与朋友交流</li></ul><ol start="6"><li>开闭</li></ol><ul><li>对修改关闭，对拓展开放<h2 id="单例模式-Singleton"><a href="#单例模式-Singleton" class="headerlink" title="单例模式-Singleton"></a>单例模式-Singleton</h2></li></ul><ol><li>饿汉式，静态成员变量实例化，构造方法私有化，jvm保证只有一个实例</li><li>懒汉式，判断实例是否为null，如果是则new，存在多线程并发访问问题</li><li>懒汉式+方法级别锁，解决2的问题，效率变慢</li><li>懒汉式+代码块锁，双重null校验，解决2的问题，效率较3快一点</li><li>静态内部类进行单例对象实例化，通过对外接口进行实例返回，达到懒汉效果，同时jvm保证只有一个实例</li><li>枚举实现单例，防止反序列化</li></ol><h2 id="策略模式-Strategy"><a href="#策略模式-Strategy" class="headerlink" title="策略模式-Strategy"></a>策略模式-Strategy</h2><ol><li>定义了算法框架，让他们分开独立实现</li><li>多用组合，少用继承思想</li><li>除了继承之外更加灵活的实现方式</li><li>针对超类/接口编程</li><li>利用java多态特性<br>demo：鸭子对象具备的不同行为，不同鸭子在相同行为下不同的表现，这些都可以用到策略模式，鸭子作为类别，行为可以看做算法，算法可以独立变化形成框架，类别基本不会变化太大，具备对象基本特征。</li></ol><h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><ol><li>简单工厂</li></ol><ul><li>是实现创建对象的一种封装，不属于设计模式，属于一种实现技巧或方法</li><li>客户端与工厂关系1:1</li></ul><ol start="2"><li>工厂方法-Factory Method</li></ol><ul><li>使用继承，通过父类工厂的创建对象方法，在父类中增加创建的抽象方法来实现</li><li>将对象的创建委托给子类工厂，子类工厂实现超类工厂方法来创建对象</li><li>用于创建单个产品</li><li>客户端与工厂的关系变成n:1</li></ul><ol start="3"><li>抽象工厂-Abstract Factory</li></ol><ul><li>使用对象组合</li><li>对象的创建被实现在工厂接口暴露出来的方法中</li><li>提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类</li><li>抽象工厂中包含工厂方法的实现</li><li>简单理解为对工厂方法的再次封装，创建组合产品</li></ul><ol start="4"><li>利用java依赖倒置原则</li></ol><h2 id="门面模式-Facade"><a href="#门面模式-Facade" class="headerlink" title="门面模式-Facade"></a>门面模式-Facade</h2><ol><li>简化接口</li><li>给子系统增加外观，简化对子系统的直接操作</li><li>MVC中的V就属于门面模式</li></ol><h2 id="调停者模式-Mediator"><a href="#调停者模式-Mediator" class="headerlink" title="调停者模式-Mediator"></a>调停者模式-Mediator</h2><ol><li>语法同门面模式</li><li>语义上是简化内部接口之间的调用或操作，通过调停者对象进行间接访问</li></ol><h2 id="责任链模式-Chain-of-Responsibility"><a href="#责任链模式-Chain-of-Responsibility" class="headerlink" title="责任链模式-Chain of Responsibility"></a>责任链模式-Chain of Responsibility</h2><ol><li>sevlet中的Filter链就是运用的该模式</li></ol><ul><li>原理：request经过Filter1-&gt;Filter2-&gt;Filter3-&gt;reponse-&gt;Filter3-&gt;Filter2-&gt;Filter1</li><li>doFilter方法入参有(req,resp,filterChain)，出参是Boolean来控制是否需要走下一个链</li></ul><ol start="2"><li>基于策略模式，不同之处在于将策略模式中变化的部分进行整合到List管理</li></ol><h2 id="装饰者模式-Decorator"><a href="#装饰者模式-Decorator" class="headerlink" title="装饰者模式-Decorator"></a>装饰者模式-Decorator</h2><ol><li>动态将功能附加到对象上，比继承更具有弹性的替换方案</li><li>装饰者和组件（被装饰者）基于同一个抽象，保证他们具有相同的类型</li><li>组件+装饰者=带有装饰者功能的组件</li><li>装饰另一个对象，并提供相应的行为</li></ol><h2 id="观察者模式-Observer"><a href="#观察者模式-Observer" class="headerlink" title="观察者模式-Observer"></a>观察者模式-Observer</h2><ol><li>事件驱动也使用该模式</li></ol><ul><li>事件源，事件本身（会持有事件源依赖），事件消费者（hook、listener、callback、observer）</li></ul><ol start="2"><li>定义了对象1:n的关系</li><li>被观察者（主题）由于某种状态的变化会主动通知信息给所有观察者</li></ol><ul><li>内容的传递有PULL拉和PUSH推2种，一般采用推</li><li>java有自带的该模式实现，但是Observable是一个类，拓展性较差</li></ul><ol start="4"><li>语法通责任链模式</li></ol><h2 id="组合模式-Composite"><a href="#组合模式-Composite" class="headerlink" title="组合模式-Composite"></a>组合模式-Composite</h2><ol><li>允许你将对象组合成树形结构来表现“整体/部分”层次结构，组合能让客户以一致的方式处理个别对象以及对象组合</li><li>牺牲一点单一职责原则换来组合节点和叶子节点的操作透明，对于客户而言，操作叶子节点和操作组合节点是一样的，但是有安全性问题：叶子节点执行添加元素操作，需要额外的增加instanceof来进行操作节点属性判断（叶子节点或组合节点）</li><li>透明性和安全性这种考虑</li></ol><ul><li>透明性：同等对待叶子节点和组合节点</li><li>安全性：避免叶子节点调用组合节点的功能出现问题</li></ul><h2 id="享元模式-Flyweight"><a href="#享元模式-Flyweight" class="headerlink" title="享元模式-Flyweight"></a>享元模式-Flyweight</h2><ol><li>各种池的设计都是利用该模式</li><li>可以结合组合模式</li><li>java中String就是利用该模式（常量池）</li></ol><h2 id="代理模式-Proxy"><a href="#代理模式-Proxy" class="headerlink" title="代理模式-Proxy"></a>代理模式-Proxy</h2><ol><li>包装另一个对象，并控制对它的访问</li><li>为另一个对象提供一个替身或者占位符以控制对这个对象的访问</li><li>被代理对象可以是远程对象、创建开销大的对象、需要安全控制的对象</li></ol><ul><li>远程代理：创建一个远程服务的代表，对这个代表的访问就相当于对远程服务的访问，代表实现了和远程服务的链接交互等问题</li><li>虚拟代理：对于创建开销特别大的真实对象，虚拟代表会在真实对象创建过程中协助处理，等创建完成后将请求转发到真实对象</li><li>保护代理（动态代理）：基于接口的动态代理，在运行时，可根据需要动态生成代理类，System.getProperties().put(“jdk.proxy.ProxyGenerator.SaveGenerateFiles”,”true”)</li><li>java自带的动态代理基于接口，cglib三方包支持类，都是基于ASM底层实现</li><li>Spring AOP</li></ul><h2 id="迭代器模式-Iterator"><a href="#迭代器模式-Iterator" class="headerlink" title="迭代器模式-Iterator"></a>迭代器模式-Iterator</h2><ol><li>容器的遍历迭代</li><li>数据存储物理结构</li></ol><ul><li>数组</li><li>链表</li></ul><ol start="3"><li>图标，栈，二叉树，队列等等都是逻辑结构，底层实现都是上述2种物理结构</li><li>将不同逻辑结构的数据容器封装一个相同的抽象方法iterator，各自去实现该方法</li></ol><h2 id="访问者模式-Visitor"><a href="#访问者模式-Visitor" class="headerlink" title="访问者模式-Visitor"></a>访问者模式-Visitor</h2><ol><li>在不改变对象内部结构的情况下，动态改变内部元素的动作</li><li>编译器原理用到该模式</li><li>asm将类字节码（结构稳定），通过该模式可以增加不同的访问对象来动态改变内部元素的动作</li></ol><h2 id="建造者模式-Builder"><a href="#建造者模式-Builder" class="headerlink" title="建造者模式-Builder"></a>建造者模式-Builder</h2><ol><li>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示</li><li>model多参数构建，可以通过set器指定初始化部分元素，也可以用该模式抽象封装出一个建造者实现来完成</li></ol><h2 id="适配器模式-Adapter"><a href="#适配器模式-Adapter" class="headerlink" title="适配器模式-Adapter"></a>适配器模式-Adapter</h2><ol><li>接口功能转换</li><li>转接头</li><li>对象适配：通过对象组合实现</li><li>类适配：通过类继承实现</li></ol><h2 id="桥接模式-Bridge"><a href="#桥接模式-Bridge" class="headerlink" title="桥接模式-Bridge"></a>桥接模式-Bridge</h2><ol><li>双维度拓展，具体和抽象支持同时拓展</li><li>抽象维度中持有具体对象的引用</li><li>装饰模式的升级，支持装饰模式中被装饰者的自我拓展</li></ol><h2 id="命令模式-Command"><a href="#命令模式-Command" class="headerlink" title="命令模式-Command"></a>命令模式-Command</h2><ol><li>调用者依赖命令对象，命令执行依赖接受者，最终接受者执行操作</li><li>应用场景：日程安排（Scheduler）、线程池、工作队列</li><li>通过对命令的有序执行，可以进行有序回退</li><li>将动作对象化，可以进行更好的存储、传递和调用</li><li>可以通过多个命令组合生成宏命令进行使用</li><li>聪明命令对象：直接实现了请求，而没有将请求委托给接收者</li></ol><h2 id="原型模式-Prototype"><a href="#原型模式-Prototype" class="headerlink" title="原型模式-Prototype"></a>原型模式-Prototype</h2><ol><li>用原型实例指定创建对象的种类，并且通过拷贝这个原型来创建新的对象</li></ol><h2 id="模板方法模式-Template-Method"><a href="#模板方法模式-Template-Method" class="headerlink" title="模板方法模式-Template Method"></a>模板方法模式-Template Method</h2><ol><li>对一类算法进行封装，将算法和各个算法实现的解耦</li><li>对一类算法进行封装，将模板方法中算法的实现可以延时到子类完成，同时子类可以在不改变算法框架的前提，改变算法内容算法和各个算法实现的解耦</li><li>模板：即方法，此方法定义了一套算法的步骤，一般为了防止算法框架被变更，可以通过final定义，不让子类继承修改</li><li>钩子的应用：可以在模板方法中加入钩子方法的调用，默认给钩子方法一个空的实现，让子类可以选择性的去实现，或者通过钩子方法返回标识来控制模板方法中哪些算法步骤需要加入算法框架</li><li>场景：数组的sort排序，比较的算法是通过排序对应的对象继承Comparable接口实现的，模板方法提供算法框架；io流的read同理</li><li>好莱坞原则：不要给我打电话，我会打电话给你，高层决定如何以及何时调用底层组件</li><li>工厂方法是模板方法的一个特殊场景</li></ol><h2 id="备忘录模式-Memento"><a href="#备忘录模式-Memento" class="headerlink" title="备忘录模式-Memento"></a>备忘录模式-Memento</h2><ol><li>记录对象的状态</li><li>存盘功能，需要将对象以及对象的引用全部序列化Serializabe，或者通过transient将对象中的引用透明化（不序列化标志）</li></ol><h2 id="状态模式-State"><a href="#状态模式-State" class="headerlink" title="状态模式-State"></a>状态模式-State</h2><ol><li>与策略模式属于“双胞胎”</li><li>允许对象在内部状态改变的时候改变他的行为，对象看起来好像修改了它的类</li><li>任何通过状态获取对应行为在设计之初都是定义好了的，不需要调用者进行状态行为的决策<br><img src="/imgs/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%9B%BE.png" alt=""></li></ol><h2 id="解释器模式-Interpreter"><a href="#解释器模式-Interpreter" class="headerlink" title="解释器模式-Interpreter"></a>解释器模式-Interpreter</h2><ol><li>给定一个语言，定义它的文法的一种表示，并定义一个解释器，该解释器使用该表示来解释语言中的句子</li></ol><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> pattern </tag>
+            
+        </tags>
       
     </entry>
     
@@ -89,6 +107,12 @@
       
       
       
+        <tags>
+            
+            <tag> micro service </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -102,6 +126,12 @@
       
       
       
+        <tags>
+            
+            <tag> oauth2 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -111,9 +141,15 @@
       <link href="/2019/11/07/xue-xi-pian/ocp-xi-tong/"/>
       <url>/2019/11/07/xue-xi-pian/ocp-xi-tong/</url>
       
-        <content type="html"><![CDATA[<h2 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h2><p>简化实体类的编码，编译后自动生成set、get器等重复性代码，开发时可忽略</p><h2 id="Oahth"><a href="#Oahth" class="headerlink" title="Oahth"></a>Oahth</h2><p>开放身份认证授权标准<br>spring security安全验证框架，对oauth标准的实现</p><h2 id="kaptcha"><a href="#kaptcha" class="headerlink" title="kaptcha"></a>kaptcha</h2><p>google图形验证码 </p><h2 id="springcloud"><a href="#springcloud" class="headerlink" title="springcloud"></a>springcloud</h2><p>将xml配置进行java对象化</p><h2 id="验证码功能"><a href="#验证码功能" class="headerlink" title="验证码功能"></a>验证码功能</h2><ul><li>页面通过url请求服务器生成验证码，同时通过redis进行持久化<h2 id="swagger"><a href="#swagger" class="headerlink" title="swagger"></a>swagger</h2>restful API接口框架</li><li>自动生成接口文档</li><li>接口测试</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<h2 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h2><p>简化实体类的编码，编译后自动生成set、get器等重复性代码，开发时可忽略</p><h2 id="Oahth"><a href="#Oahth" class="headerlink" title="Oahth"></a>Oahth</h2><p>开放身份认证授权标准<br>spring security安全验证框架，对oauth标准的实现</p><h2 id="kaptcha"><a href="#kaptcha" class="headerlink" title="kaptcha"></a>kaptcha</h2><p>google图形验证码 </p><h2 id="springcloud"><a href="#springcloud" class="headerlink" title="springcloud"></a>springcloud</h2><p>将xml配置进行java对象化</p><h2 id="验证码功能"><a href="#验证码功能" class="headerlink" title="验证码功能"></a>验证码功能</h2><ul><li>页面通过url请求服务器生成验证码，同时通过redis进行持久化<h2 id="swagger"><a href="#swagger" class="headerlink" title="swagger"></a>swagger</h2>restful API接口框架</li><li>自动生成接口文档</li><li>接口测试<h2 id="xxl-job"><a href="#xxl-job" class="headerlink" title="xxl-job"></a>xxl-job</h2></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> micro service </tag>
+            
+        </tags>
       
     </entry>
     
@@ -140,6 +176,12 @@
         <content type="html"><![CDATA[<h2 id="比特币"><a href="#比特币" class="headerlink" title="比特币"></a>比特币</h2><h3 id="是一种数字或者叫电子货币"><a href="#是一种数字或者叫电子货币" class="headerlink" title="是一种数字或者叫电子货币"></a>是一种数字或者叫电子货币</h3><h3 id="去中心化的点对点（P2P）电子记账系统"><a href="#去中心化的点对点（P2P）电子记账系统" class="headerlink" title="去中心化的点对点（P2P）电子记账系统"></a>去中心化的点对点（P2P）电子记账系统</h3><h2 id="区块链"><a href="#区块链" class="headerlink" title="区块链"></a>区块链</h2><h3 id="由比特币衍生出来的一个概念"><a href="#由比特币衍生出来的一个概念" class="headerlink" title="由比特币衍生出来的一个概念"></a>由比特币衍生出来的一个概念</h3><h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><ul><li>ABCD相互交易</li><li>A给B10个比特币，该交易记录A会广播出去让BCD都知道</li><li>同理BCD的交易记录也会广播到所有用户</li><li>这些交易记录会打包成一个块（<strong>区块</strong>）</li><li>每个区块大小1M，可以存储4000多条交易记录</li><li>每个新块会链接到之前的老块上就形成了<strong>区块链</strong></li></ul><h2 id="挖矿原理"><a href="#挖矿原理" class="headerlink" title="挖矿原理"></a>挖矿原理</h2><ul><li>哈希算法（sha256）</li><li>通过对一个字符串进行2次哈希运算</li><li>字符串：前区块的头部+交易信息+其他信息+时间戳+随机数</li><li>挖矿规则：通过改变随机数让最后计算出的hash值前n为都为0则表示挖矿成功</li><li>难度系数：n个位数</li></ul><h2 id="区块链需要考虑的问题"><a href="#区块链需要考虑的问题" class="headerlink" title="区块链需要考虑的问题"></a>区块链需要考虑的问题</h2><ul><li>区块以谁为准</li><li>为什么要记账</li><li>如何防伪和防篡改</li></ul><h3 id="为什么记账"><a href="#为什么记账" class="headerlink" title="为什么记账"></a>为什么记账</h3><ul><li>会有额外奖励，每次交易会额外增加手续费，同时打包区块也有奖励</li></ul><h3 id="比特币总数"><a href="#比特币总数" class="headerlink" title="比特币总数"></a>比特币总数</h3><ul><li>每4年打包奖励减半，从50个比特币开始依次类推</li><li>每10分钟允许打包一次</li><li>50<em>6</em>24<em>365</em>4*（1+1/2+1/4+…）= 2100w左右</li></ul><h3 id="以谁为准"><a href="#以谁为准" class="headerlink" title="以谁为准"></a>以谁为准</h3><ul><li>工作量证明，解决一个数学题，谁先解决就以谁为准进行打包</li></ul><h3 id="身份认证"><a href="#身份认证" class="headerlink" title="身份认证"></a>身份认证</h3><ul><li>ras非对称算法安全性保证</li><li>每个用户都可以通过申请得到一个私钥，每次交易记录进行广播都会进行加密</li><li>发送方：交易记录+摘要（通过对交易记录进行hash运算）+密文（通过对摘要进行私钥加密）</li><li>广播内容：交易记录+公钥+密文</li><li>接收方：对交易记录进行hash运算得到摘要+通过公钥和密文进行解密得到摘要，比对2个摘要是否相等</li></ul><h3 id="余额检查"><a href="#余额检查" class="headerlink" title="余额检查"></a>余额检查</h3><ul><li>通过追溯的方式进行区块主链上交易记录进行用户比特币余额计算</li></ul><h3 id="双重支付"><a href="#双重支付" class="headerlink" title="双重支付"></a>双重支付</h3><ul><li>余额为10比特币，同时发送交易记录给A，B</li><li>其他所有用户可能有部分接受到的交易记录是给A，有点给B</li><li>等到某个用户挖到矿打包区块的时候会根据该用户接受到的交易记录为准，另一条作废</li><li>比特币的交易需要过几个区块才能确定是否成功</li></ul><h3 id="防止篡改"><a href="#防止篡改" class="headerlink" title="防止篡改"></a>防止篡改</h3><ul><li>区块链需要满足最长链路原则</li><li>如果已经有3个区块，某用户想修改第二个区块内的交易信息</li><li>必须在第二个区块进行重新打包，同时要打包出第三个区块、第四个区块…</li><li>还需要该进度快于已经存在的3个区块打包进度</li><li>难度：以个人之力对抗所有用户挖矿能力</li><li>其他所有用户都在主链上挖矿，个人需要开辟新分支进行单独挖矿</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> 区块链 </tag>
+            
+        </tags>
       
     </entry>
     

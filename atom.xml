@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.allnice.ml/"/>
-  <updated>2019-11-26T06:09:06.227Z</updated>
+  <updated>2019-11-26T08:13:01.256Z</updated>
   <id>https://www.allnice.ml/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.allnice.ml/2019/11/26/xue-xi-pian/yi-jian-jian-zhu/"/>
     <id>https://www.allnice.ml/2019/11/26/xue-xi-pian/yi-jian-jian-zhu/</id>
     <published>2019-11-26T01:35:36.000Z</published>
-    <updated>2019-11-26T06:09:06.227Z</updated>
+    <updated>2019-11-26T08:13:01.256Z</updated>
     
     <summary type="html">
     
@@ -36,6 +36,8 @@
     </summary>
     
     
+      <category term="考证" scheme="https://www.allnice.ml/tags/%E8%80%83%E8%AF%81/"/>
+    
   </entry>
   
   <entry>
@@ -43,7 +45,7 @@
     <link href="https://www.allnice.ml/2019/11/22/xue-xi-pian/fen-bu-shi-li-lun/"/>
     <id>https://www.allnice.ml/2019/11/22/xue-xi-pian/fen-bu-shi-li-lun/</id>
     <published>2019-11-22T02:17:52.000Z</published>
-    <updated>2019-11-22T02:46:59.986Z</updated>
+    <updated>2019-11-26T07:06:32.033Z</updated>
     
     <summary type="html">
     
@@ -58,6 +60,8 @@
     </summary>
     
     
+      <category term="分布式" scheme="https://www.allnice.ml/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
   </entry>
   
   <entry>
@@ -65,7 +69,7 @@
     <link href="https://www.allnice.ml/2019/11/21/xue-xi-pian/she-ji-mo-shi/"/>
     <id>https://www.allnice.ml/2019/11/21/xue-xi-pian/she-ji-mo-shi/</id>
     <published>2019-11-21T08:26:13.000Z</published>
-    <updated>2019-11-26T04:43:10.250Z</updated>
+    <updated>2019-11-26T07:06:29.699Z</updated>
     
     <summary type="html">
     
@@ -83,6 +87,8 @@
     
     </summary>
     
+    
+      <category term="pattern" scheme="https://www.allnice.ml/tags/pattern/"/>
     
   </entry>
   
@@ -139,7 +145,7 @@
     <link href="https://www.allnice.ml/2019/11/11/xue-xi-pian/yws-micro-service-platform/"/>
     <id>https://www.allnice.ml/2019/11/11/xue-xi-pian/yws-micro-service-platform/</id>
     <published>2019-11-11T04:53:22.000Z</published>
-    <updated>2019-11-12T02:57:23.507Z</updated>
+    <updated>2019-11-26T06:17:47.308Z</updated>
     
     <summary type="html">
     
@@ -155,6 +161,8 @@
     </summary>
     
     
+      <category term="micro service" scheme="https://www.allnice.ml/tags/micro-service/"/>
+    
   </entry>
   
   <entry>
@@ -162,7 +170,7 @@
     <link href="https://www.allnice.ml/2019/11/07/xue-xi-pian/spring-security-oauth2/"/>
     <id>https://www.allnice.ml/2019/11/07/xue-xi-pian/spring-security-oauth2/</id>
     <published>2019-11-07T09:18:38.000Z</published>
-    <updated>2019-11-10T14:08:35.425Z</updated>
+    <updated>2019-11-26T06:17:46.067Z</updated>
     
     <summary type="html">
     
@@ -177,6 +185,8 @@
     </summary>
     
     
+      <category term="oauth2" scheme="https://www.allnice.ml/tags/oauth2/"/>
+    
   </entry>
   
   <entry>
@@ -184,7 +194,7 @@
     <link href="https://www.allnice.ml/2019/11/07/xue-xi-pian/ocp-xi-tong/"/>
     <id>https://www.allnice.ml/2019/11/07/xue-xi-pian/ocp-xi-tong/</id>
     <published>2019-11-07T08:33:48.000Z</published>
-    <updated>2019-11-10T14:07:09.824Z</updated>
+    <updated>2019-11-26T06:17:40.522Z</updated>
     
     <summary type="html">
     
@@ -199,6 +209,8 @@
     
     </summary>
     
+    
+      <category term="micro service" scheme="https://www.allnice.ml/tags/micro-service/"/>
     
   </entry>
   
@@ -229,7 +241,7 @@
     <link href="https://www.allnice.ml/2019/11/07/xue-xi-pian/qu-kuai-lian-gai-nian/"/>
     <id>https://www.allnice.ml/2019/11/07/xue-xi-pian/qu-kuai-lian-gai-nian/</id>
     <published>2019-11-07T03:42:52.000Z</published>
-    <updated>2019-11-07T07:07:01.717Z</updated>
+    <updated>2019-11-26T07:06:37.140Z</updated>
     
     <summary type="html">
     
@@ -243,6 +255,8 @@
     
     </summary>
     
+    
+      <category term="区块链" scheme="https://www.allnice.ml/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
   </entry>
   
