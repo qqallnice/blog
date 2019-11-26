@@ -1,0 +1,1010 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="设计模式, it, java, js">
+    <meta name="description" content="java特性
+封装
+抽象
+继承
+多态设计模式原则
+单一职责
+
+
+一个对象的改变只由一个原因倒置
+不同逻辑的接口分割成单一逻辑接口
+大到接口、中到实现类、小到方法尽量遵守
+
+
+里氏替换
+
+
+子类可以拓展父类的功能，但是不能变更
+子类相比父类方">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>设计模式 | allnice</title>
+    <link rel="icon" type="image/png" href="/sitefavicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">allnice</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">allnice</div>
+        <div class="logo-desc">
+            
+            personal note
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/qqallnice/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/qqallnice/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        设计模式
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-11-21
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.7k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        9 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="java特性"><a href="#java特性" class="headerlink" title="java特性"></a>java特性</h2><ol>
+<li>封装</li>
+<li>抽象</li>
+<li>继承</li>
+<li>多态<h2 id="设计模式原则"><a href="#设计模式原则" class="headerlink" title="设计模式原则"></a>设计模式原则</h2></li>
+<li>单一职责</li>
+</ol>
+<ul>
+<li>一个对象的改变只由一个原因倒置</li>
+<li>不同逻辑的接口分割成单一逻辑接口</li>
+<li>大到接口、中到实现类、小到方法尽量遵守</li>
+</ul>
+<ol start="2">
+<li>里氏替换</li>
+</ol>
+<ul>
+<li>子类可以拓展父类的功能，但是不能变更</li>
+<li>子类相比父类方法需要多（入参类型更广）入（方法入参）少（出参类型更窄）出（方法出参）的 </li>
+</ul>
+<ol start="3">
+<li>依赖倒置</li>
+</ol>
+<ul>
+<li>高层组件：调用端（客户端）</li>
+<li>底层组件：具体实现类</li>
+<li>不能让高层组件依赖低层组件，两者都应依赖于抽象</li>
+</ul>
+<ol start="4">
+<li>接口隔离</li>
+</ol>
+<ul>
+<li>依赖于单一职责原则，接口原子化</li>
+<li>单一逻辑接口由于权限不同需要继续细化</li>
+</ul>
+<ol start="5">
+<li>迪米特</li>
+</ol>
+<ul>
+<li>最小知识原则，尽量减少使用public接口</li>
+<li>只与朋友交流</li>
+</ul>
+<ol start="6">
+<li>开闭</li>
+</ol>
+<ul>
+<li>对修改关闭，对拓展开放<h2 id="单例模式-Singleton"><a href="#单例模式-Singleton" class="headerlink" title="单例模式-Singleton"></a>单例模式-Singleton</h2></li>
+</ul>
+<ol>
+<li>饿汉式，静态成员变量实例化，构造方法私有化，jvm保证只有一个实例</li>
+<li>懒汉式，判断实例是否为null，如果是则new，存在多线程并发访问问题</li>
+<li>懒汉式+方法级别锁，解决2的问题，效率变慢</li>
+<li>懒汉式+代码块锁，双重null校验，解决2的问题，效率较3快一点</li>
+<li>静态内部类进行单例对象实例化，通过对外接口进行实例返回，达到懒汉效果，同时jvm保证只有一个实例</li>
+<li>枚举实现单例，防止反序列化</li>
+</ol>
+<h2 id="策略模式-Strategy"><a href="#策略模式-Strategy" class="headerlink" title="策略模式-Strategy"></a>策略模式-Strategy</h2><ol>
+<li>定义了算法框架，让他们分开独立实现</li>
+<li>多用组合，少用继承思想</li>
+<li>除了继承之外更加灵活的实现方式</li>
+<li>针对超类/接口编程</li>
+<li>利用java多态特性<br>demo：鸭子对象具备的不同行为，不同鸭子在相同行为下不同的表现，这些都可以用到策略模式，鸭子作为类别，行为可以看做算法，算法可以独立变化形成框架，类别基本不会变化太大，具备对象基本特征。</li>
+</ol>
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><ol>
+<li>简单工厂</li>
+</ol>
+<ul>
+<li>是实现创建对象的一种封装，不属于设计模式，属于一种实现技巧或方法</li>
+<li>客户端与工厂关系1:1</li>
+</ul>
+<ol start="2">
+<li>工厂方法-Factory Method</li>
+</ol>
+<ul>
+<li>使用继承，通过父类工厂的创建对象方法，在父类中增加创建的抽象方法来实现</li>
+<li>将对象的创建委托给子类工厂，子类工厂实现超类工厂方法来创建对象</li>
+<li>用于创建单个产品</li>
+<li>客户端与工厂的关系变成n:1</li>
+</ul>
+<ol start="3">
+<li>抽象工厂-Abstract Factory</li>
+</ol>
+<ul>
+<li>使用对象组合</li>
+<li>对象的创建被实现在工厂接口暴露出来的方法中</li>
+<li>提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类</li>
+<li>抽象工厂中包含工厂方法的实现</li>
+<li>简单理解为对工厂方法的再次封装，创建组合产品</li>
+</ul>
+<ol start="4">
+<li>利用java依赖倒置原则</li>
+</ol>
+<h2 id="门面模式-Facade"><a href="#门面模式-Facade" class="headerlink" title="门面模式-Facade"></a>门面模式-Facade</h2><ol>
+<li>简化接口</li>
+<li>给子系统增加外观，简化对子系统的直接操作</li>
+<li>MVC中的V就属于门面模式</li>
+</ol>
+<h2 id="调停者模式-Mediator"><a href="#调停者模式-Mediator" class="headerlink" title="调停者模式-Mediator"></a>调停者模式-Mediator</h2><ol>
+<li>语法同门面模式</li>
+<li>语义上是简化内部接口之间的调用或操作，通过调停者对象进行间接访问</li>
+</ol>
+<h2 id="责任链模式-Chain-of-Responsibility"><a href="#责任链模式-Chain-of-Responsibility" class="headerlink" title="责任链模式-Chain of Responsibility"></a>责任链模式-Chain of Responsibility</h2><ol>
+<li>sevlet中的Filter链就是运用的该模式</li>
+</ol>
+<ul>
+<li>原理：request经过Filter1-&gt;Filter2-&gt;Filter3-&gt;reponse-&gt;Filter3-&gt;Filter2-&gt;Filter1</li>
+<li>doFilter方法入参有(req,resp,filterChain)，出参是Boolean来控制是否需要走下一个链</li>
+</ul>
+<ol start="2">
+<li>基于策略模式，不同之处在于将策略模式中变化的部分进行整合到List管理</li>
+</ol>
+<h2 id="装饰者模式-Decorator"><a href="#装饰者模式-Decorator" class="headerlink" title="装饰者模式-Decorator"></a>装饰者模式-Decorator</h2><ol>
+<li>动态将功能附加到对象上，比继承更具有弹性的替换方案</li>
+<li>装饰者和组件（被装饰者）基于同一个抽象，保证他们具有相同的类型</li>
+<li>组件+装饰者=带有装饰者功能的组件</li>
+<li>装饰另一个对象，并提供相应的行为</li>
+</ol>
+<h2 id="观察者模式-Observer"><a href="#观察者模式-Observer" class="headerlink" title="观察者模式-Observer"></a>观察者模式-Observer</h2><ol>
+<li>事件驱动也使用该模式</li>
+</ol>
+<ul>
+<li>事件源，事件本身（会持有事件源依赖），事件消费者（hook、listener、callback、observer）</li>
+</ul>
+<ol start="2">
+<li>定义了对象1:n的关系</li>
+<li>被观察者（主题）由于某种状态的变化会主动通知信息给所有观察者</li>
+</ol>
+<ul>
+<li>内容的传递有PULL拉和PUSH推2种，一般采用推</li>
+<li>java有自带的该模式实现，但是Observable是一个类，拓展性较差</li>
+</ul>
+<ol start="4">
+<li>语法通责任链模式</li>
+</ol>
+<h2 id="组合模式-Composite"><a href="#组合模式-Composite" class="headerlink" title="组合模式-Composite"></a>组合模式-Composite</h2><ol>
+<li>允许你将对象组合成树形结构来表现“整体/部分”层次结构，组合能让客户以一致的方式处理个别对象以及对象组合</li>
+<li>牺牲一点单一职责原则换来组合节点和叶子节点的操作透明，对于客户而言，操作叶子节点和操作组合节点是一样的，但是有安全性问题：叶子节点执行添加元素操作，需要额外的增加instanceof来进行操作节点属性判断（叶子节点或组合节点）</li>
+<li>透明性和安全性这种考虑</li>
+</ol>
+<ul>
+<li>透明性：同等对待叶子节点和组合节点</li>
+<li>安全性：避免叶子节点调用组合节点的功能出现问题</li>
+</ul>
+<h2 id="享元模式-Flyweight"><a href="#享元模式-Flyweight" class="headerlink" title="享元模式-Flyweight"></a>享元模式-Flyweight</h2><ol>
+<li>各种池的设计都是利用该模式</li>
+<li>可以结合组合模式</li>
+<li>java中String就是利用该模式（常量池）</li>
+</ol>
+<h2 id="代理模式-Proxy"><a href="#代理模式-Proxy" class="headerlink" title="代理模式-Proxy"></a>代理模式-Proxy</h2><ol>
+<li>包装另一个对象，并控制对它的访问</li>
+<li>为另一个对象提供一个替身或者占位符以控制对这个对象的访问</li>
+<li>被代理对象可以是远程对象、创建开销大的对象、需要安全控制的对象</li>
+</ol>
+<ul>
+<li>远程代理：创建一个远程服务的代表，对这个代表的访问就相当于对远程服务的访问，代表实现了和远程服务的链接交互等问题</li>
+<li>虚拟代理：对于创建开销特别大的真实对象，虚拟代表会在真实对象创建过程中协助处理，等创建完成后将请求转发到真实对象</li>
+<li>保护代理（动态代理）：基于接口的动态代理，在运行时，可根据需要动态生成代理类，System.getProperties().put(“jdk.proxy.ProxyGenerator.SaveGenerateFiles”,”true”)</li>
+<li>java自带的动态代理基于接口，cglib三方包支持类，都是基于ASM底层实现</li>
+<li>Spring AOP</li>
+</ul>
+<h2 id="迭代器模式-Iterator"><a href="#迭代器模式-Iterator" class="headerlink" title="迭代器模式-Iterator"></a>迭代器模式-Iterator</h2><ol>
+<li>容器的遍历迭代</li>
+<li>数据存储物理结构</li>
+</ol>
+<ul>
+<li>数组</li>
+<li>链表</li>
+</ul>
+<ol start="3">
+<li>图标，栈，二叉树，队列等等都是逻辑结构，底层实现都是上述2种物理结构</li>
+<li>将不同逻辑结构的数据容器封装一个相同的抽象方法iterator，各自去实现该方法</li>
+</ol>
+<h2 id="访问者模式-Visitor"><a href="#访问者模式-Visitor" class="headerlink" title="访问者模式-Visitor"></a>访问者模式-Visitor</h2><ol>
+<li>在不改变对象内部结构的情况下，动态改变内部元素的动作</li>
+<li>编译器原理用到该模式</li>
+<li>asm将类字节码（结构稳定），通过该模式可以增加不同的访问对象来动态改变内部元素的动作</li>
+</ol>
+<h2 id="建造者模式-Builder"><a href="#建造者模式-Builder" class="headerlink" title="建造者模式-Builder"></a>建造者模式-Builder</h2><ol>
+<li>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示</li>
+<li>model多参数构建，可以通过set器指定初始化部分元素，也可以用该模式抽象封装出一个建造者实现来完成</li>
+</ol>
+<h2 id="适配器模式-Adapter"><a href="#适配器模式-Adapter" class="headerlink" title="适配器模式-Adapter"></a>适配器模式-Adapter</h2><ol>
+<li>接口功能转换</li>
+<li>转接头</li>
+<li>对象适配：通过对象组合实现</li>
+<li>类适配：通过类继承实现</li>
+</ol>
+<h2 id="桥接模式-Bridge"><a href="#桥接模式-Bridge" class="headerlink" title="桥接模式-Bridge"></a>桥接模式-Bridge</h2><ol>
+<li>双维度拓展，具体和抽象支持同时拓展</li>
+<li>抽象维度中持有具体对象的引用</li>
+<li>装饰模式的升级，支持装饰模式中被装饰者的自我拓展</li>
+</ol>
+<h2 id="命令模式-Command"><a href="#命令模式-Command" class="headerlink" title="命令模式-Command"></a>命令模式-Command</h2><ol>
+<li>调用者依赖命令对象，命令执行依赖接受者，最终接受者执行操作</li>
+<li>应用场景：日程安排（Scheduler）、线程池、工作队列</li>
+<li>通过对命令的有序执行，可以进行有序回退</li>
+<li>将动作对象化，可以进行更好的存储、传递和调用</li>
+<li>可以通过多个命令组合生成宏命令进行使用</li>
+<li>聪明命令对象：直接实现了请求，而没有将请求委托给接收者</li>
+</ol>
+<h2 id="原型模式-Prototype"><a href="#原型模式-Prototype" class="headerlink" title="原型模式-Prototype"></a>原型模式-Prototype</h2><ol>
+<li>用原型实例指定创建对象的种类，并且通过拷贝这个原型来创建新的对象</li>
+</ol>
+<h2 id="模板方法模式-Template-Method"><a href="#模板方法模式-Template-Method" class="headerlink" title="模板方法模式-Template Method"></a>模板方法模式-Template Method</h2><ol>
+<li>对一类算法进行封装，将算法和各个算法实现的解耦</li>
+<li>对一类算法进行封装，将模板方法中算法的实现可以延时到子类完成，同时子类可以在不改变算法框架的前提，改变算法内容算法和各个算法实现的解耦</li>
+<li>模板：即方法，此方法定义了一套算法的步骤，一般为了防止算法框架被变更，可以通过final定义，不让子类继承修改</li>
+<li>钩子的应用：可以在模板方法中加入钩子方法的调用，默认给钩子方法一个空的实现，让子类可以选择性的去实现，或者通过钩子方法返回标识来控制模板方法中哪些算法步骤需要加入算法框架</li>
+<li>场景：数组的sort排序，比较的算法是通过排序对应的对象继承Comparable接口实现的，模板方法提供算法框架；io流的read同理</li>
+<li>好莱坞原则：不要给我打电话，我会打电话给你，高层决定如何以及何时调用底层组件</li>
+<li>工厂方法是模板方法的一个特殊场景</li>
+</ol>
+<h2 id="备忘录模式-Memento"><a href="#备忘录模式-Memento" class="headerlink" title="备忘录模式-Memento"></a>备忘录模式-Memento</h2><ol>
+<li>记录对象的状态</li>
+<li>存盘功能，需要将对象以及对象的引用全部序列化Serializabe，或者通过transient将对象中的引用透明化（不序列化标志）</li>
+</ol>
+<h2 id="状态模式-State"><a href="#状态模式-State" class="headerlink" title="状态模式-State"></a>状态模式-State</h2><ol>
+<li>与策略模式属于“双胞胎”</li>
+<li>允许对象在内部状态改变的时候改变他的行为，对象看起来好像修改了它的类</li>
+<li>任何通过状态获取对应行为在设计之初都是定义好了的，不需要调用者进行状态行为的决策<br><img src="/imgs/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%9B%BE.png" alt=""></li>
+</ol>
+<h2 id="解释器模式-Interpreter"><a href="#解释器模式-Interpreter" class="headerlink" title="解释器模式-Interpreter"></a>解释器模式-Interpreter</h2><ol>
+<li>给定一个语言，定义它的文法的一种表示，并定义一个解释器，该解释器使用该表示来解释语言中的句子</li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/11/22/xue-xi-pian/fen-bu-shi-li-lun/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="分布式理论">
+                        
+                        <span class="card-title">分布式理论</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            CAP
+C:Consistent，一致性
+A:Available，可用性
+P:Partition tolerance，分区容错性理解CAP理论的最简单方式是想象两个节点分处分区两侧。允许至少一个节点更新状态会导致数据不一致，即丧失了C性质
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            yw
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/11/20/xue-xi-pian/io-mo-xing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="io模型">
+                        
+                        <span class="card-title">io模型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            同步 异步 阻塞 非阻塞
+同步异步是消息通讯机制
+阻塞非阻塞关注的是等待消息的状态demo：张三完成烧水：张三发起烧水动作，水壶放在炉子上
+同步：水烧好后继续由张三操作
+阻塞：张三发起烧水动作到水烧好的这个等待状态是不做任何事
+异步：张三事
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            yw
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/io/" target="_blank">
+                        <span class="chip bg-color">io</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://qqallnice.github.io/blog" target="_blank">qqallnice</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/qqallnice/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">11.5k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/qqallnice" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yaweng628@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1016132490@qq.com" class="tooltipped" data-tooltip="QQ联系我: 1016132490@qq.com" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
