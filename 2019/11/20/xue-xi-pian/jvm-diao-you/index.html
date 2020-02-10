@@ -10,9 +10,13 @@ jvm
 classic VM：第一款商用
 hotspot VM：热门VM
 
-Run-time data area
-PC：程序计数器，记录程序运行的指令地址，目的是线程切换后再次回来能知道线程运行到哪里，线程独享
-Na">
+将引用分为4种
+Strong：通过new出来的对象
+Soft：继承Reference
+内存不足时一定会被GC，长期不用也会被GC
+
+
+Wea">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -419,14 +423,14 @@ Na">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        636
+                        7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        26 分
                     </div>
                     
                 
@@ -445,78 +449,820 @@ Na">
                 <h2 id="jdk、jre和jvm"><a href="#jdk、jre和jvm" class="headerlink" title="jdk、jre和jvm"></a>jdk、jre和jvm</h2><p><img src="/imgs/jdk.png" alt=""></p>
 <h2 id="jvm"><a href="#jvm" class="headerlink" title="jvm"></a>jvm</h2><ul>
 <li>classic VM：第一款商用</li>
-<li>hotspot VM：热门VM</li>
+<li>hotspot VM：热门VM<ul>
+<li><img src="/imgs/hotspotcomponent.png" alt=""></li>
+<li>将引用分为4种<ol>
+<li>Strong：通过new出来的对象</li>
+<li>Soft：继承Reference<ul>
+<li>内存不足时一定会被GC，长期不用也会被GC</li>
+</ul>
+</li>
+<li>Weak：继承Reference<ul>
+<li>一定会被GC，当被mark为dead，会在ReferenceQueue中通知</li>
+</ul>
+</li>
+<li>Phantom：继承Reference<ul>
+<li>本来就没引用，当从jvm heap释放会通知</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>JVM参数选项<ul>
+<li>-XX:+&lt; option &gt;<ul>
+<li>代表开启option选项</li>
+</ul>
+</li>
+<li>-XX:-&lt; option &gt;<ul>
+<li>代表关闭option选项</li>
+</ul>
+</li>
+<li>-XX:&lt; option &gt;=&lt; value &gt;<ul>
+<li>代表将option选项值设置为value</li>
+</ul>
+</li>
+<li><code>java -XX:+PrintCommandLineFlags -version</code><ul>
+<li>打印当前机器jvm的默认参数信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>jvm中gc相关选项<ul>
+<li>-verbose:gc<ul>
+<li>冗余gc信息输出</li>
+</ul>
+</li>
+<li>-Xms20m<ul>
+<li>heap最小空间大小</li>
+</ul>
+</li>
+<li>-Xmx20m<ul>
+<li>heap最大空间大小</li>
+</ul>
+</li>
+<li>-Xmn10m<ul>
+<li>heap中新生代大小</li>
+</ul>
+</li>
+<li>-XX:+PrintGCDetails<ul>
+<li>打印GC详细信息</li>
+</ul>
+</li>
+<li>-XX:SurvivorRatio=8<ul>
+<li>Eden区和Survivor区的比例，8:1:1</li>
+</ul>
+</li>
+<li>-XX:PretenureSizeThreshold=4194304<ul>
+<li>当新生代对象初始大小超过阈值4M则直接在老年代进行分配，该配置项只能在串行GC收集器中生效</li>
+</ul>
+</li>
+<li>-XX:+UseSerialGC<ul>
+<li>使用串行GC，默认是ParallelGC</li>
+</ul>
+</li>
+<li>-XX:MaxTenuringThreshold=5<ul>
+<li>自动调节对象多少次GC后晋升(promote)到老年代中，阈值的最大值为5，jvm的GC可能在小于5时就让对象晋升（GC会计算每个对象的年龄，如果某个年龄后发现总大小已经大于了单个Survivor空间的50%，则该值会被自动调节，可能不会继续等到设置的最大值就完成多次存活对象的晋升），默认15(4bit存放)</li>
+</ul>
+</li>
+<li>-XX:+PrintTenuringDistribution<ul>
+<li>开启Tenuring对象信息（对象每次GC年龄会+1）</li>
+</ul>
+</li>
+<li>-XX:TargetSurvivorRatio=60<ul>
+<li>当其中一个Survivor空间被使用超过60%，则自动计算MaxTenuringThreshold值</li>
+</ul>
+</li>
+<li>-XX:+PrintGCDateStamps<ul>
+<li>打印GC时间信息</li>
+</ul>
+</li>
+<li>-XX:+UseConcMarkSweepGC<ul>
+<li>老年代使用CMS收集器</li>
+</ul>
+</li>
+<li>-XX:+UseParNewGC<ul>
+<li>新生代使用ParNew收集器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>包含解释执行和编译执行混合模式<ul>
+<li>解释执行：解释器不断读取字节码，碰到对应指令就解释执行</li>
+<li>编译执行：通过JIT（just in time）即时编译器来讲字节码（热点代码）编译成本地机器码</li>
+</ul>
+</li>
+<li>基于栈的指令集<ul>
+<li>jvm是基于此，部分热点指令操作会做相关寄存器指令映射，从而提升指令操作效率</li>
+<li>移植性好</li>
+<li>基于内存操作，可能多个指令才能实现寄存器的一个指令操作</li>
+</ul>
+</li>
+<li>基于寄存器的指令集<ul>
+<li>速度更快，基于cpu高速缓存操作</li>
+<li>更贴近硬件指令，指令更底层效率更高</li>
+</ul>
+</li>
 </ul>
 <h2 id="Run-time-data-area"><a href="#Run-time-data-area" class="headerlink" title="Run-time data area"></a>Run-time data area</h2><ul>
+<li><img src="/imgs/jvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png" alt=""></li>
 <li>PC：程序计数器，记录程序运行的指令地址，目的是线程切换后再次回来能知道线程运行到哪里，线程独享</li>
 <li>Native Method Stacks：本地方法栈，线程独享</li>
-<li>VM Stacks：vm虚拟机栈，存放栈针(一个方法一个栈针)，线程独享</li>
+<li>VM Stacks：vm虚拟机栈，存放栈帧(一个方法一个栈帧)，线程独享</li>
 <li>Heap：堆，线程共享</li>
-<li>Method Area：（Perm/Meta Space）方法区，线程共享</li>
-<li>Const Pool：常量池，属于方法栈，线程共享</li>
+<li>Method Area：（Perm/Meta Space）方法区，线程共享<ul>
+<li>jdk1.8之前称为永久代</li>
 </ul>
-<h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><p><img src="/imgs/heap.png" alt=""></p>
-<h3 id="Garbage-Collector"><a href="#Garbage-Collector" class="headerlink" title="Garbage Collector"></a>Garbage Collector</h3><ul>
+</li>
+<li>Const Pool：常量池，属于方法区，线程共享</li>
+</ul>
+<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><ul>
+<li>GC的非主要工作区域</li>
+<li>设置大小：-XX:MaxMetaSpaceSize=10m</li>
+<li>元空间：每个类加载之后都会有其对应的元空间存储类字节（包括常量池、字段描述、方法描述等）等相关元数据，这些类元空间累计就是元空间大小<ul>
+<li>元空间不够会出发Full GC，如果Full GC完之后可用空间过小或自动扩容，元空间属于本地内存，由元空间VM来管理</li>
+<li>所以元空间大小需要设置为一个较高水位线，不然会出发多次Full GC</li>
+</ul>
+</li>
+<li>回收内容<ul>
+<li>废弃常量</li>
+<li>无用类，同时满足3个条件<ol>
+<li>该类的所有实例都被GC了</li>
+<li>加载该类的ClassLoader被GC了</li>
+<li>该类对应的java.lang.Class对象没有任何地方有引用，即不能有通过放射访问该类的地方</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><ul>
+<li>设置栈大小：-Xss160k</li>
+<li>栈中局部变量表中，引用访问对象的方式<ol>
+<li>使用句柄的方式：直接指向一个句柄（可以理解为指针的抽象封装或描述符），句柄包含了引用对象的在方法区的元数据指针和堆中对象数据信息的指针</li>
+<li>使用直接指针的方式：直接指针指向堆中对象数据信息，对象数据信息包含了对象的在方法区的元数据指针</li>
+</ol>
+</li>
+</ul>
+<h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><ul>
+<li><img src="/imgs/heap.png" alt=""></li>
+<li>传统heap结构：<img src="/imgs/heapstructure.png" alt=""></li>
+<li>G1heap结构：<img src="/imgs/g1heapstructure.png" alt=""></li>
+<li>设置堆内存最小最大值：-Xms5m -Xmx5m</li>
+<li>new<ol>
+<li>在heap中创建类的实例</li>
+<li>为对象的成员变量赋初始值</li>
+<li>将对象引用返回</li>
+</ol>
+<ul>
+<li>指针碰撞：堆中空间通过指针进行划分，一边是已使用内存空间，另一边是未使用内存空间</li>
+<li>空闲列表：由空闲列表维护内存空间使用记录，然后分配新的对象内存后同步维护空闲列表信息</li>
+</ul>
+</li>
+</ul>
+<h2 id="JVM垃圾回收"><a href="#JVM垃圾回收" class="headerlink" title="JVM垃圾回收"></a>JVM垃圾回收</h2><ul>
 <li>如何判断需要回收：没有任何引用的对象</li>
-<li>垃圾判断算法</li>
 </ul>
-<ol>
+<h3 id="垃圾判断算法"><a href="#垃圾判断算法" class="headerlink" title="垃圾判断算法"></a>垃圾判断算法</h3><ol>
 <li>引用计数：算法简单，但是容易出现循环依赖导致都无法回收</li>
-<li>根搜索，正向可达：通过程序运行时产生的根对象，依次正向寻找这些对象需要的依赖，能找到的都不回收</li>
-</ol>
-<ul>
+<li>根搜索，正向可达：通过程序运行时产生的根对象(GC Roots)，依次正向寻找这些对象需要的依赖，能找到的都不回收，java采用的次算法<ul>
+<li>GC Roots:JVM stack、方法区中的静态引用、JNI(Native Method Stacks)引用</li>
+<li>枚举根节点是通过OopMap表来进行辅助实现的，OopMap会记录很多引用信息，很多指令都会导致引用信息变更，如果都需要同步OopMap会导致额外的空间成本</li>
+<li>HotSpot并没有为每条指令都生成OopMap，而是在<strong>特定位置</strong>记录，这些位置成为<strong>安全点(Safepoint)</strong>,程序只有达到安全点后才能暂停来执行GC，并非所有时刻都可以暂停执行GC</li>
+<li>Safepoint不能太少（会导致GC等待时间太长）也不能太多（会导致GC过于频繁），安全点的选定基本上是以<strong>是否具有让程序长时间运行的特征</strong>为标准的，<strong>长时间执行</strong>最明显的特征就是指令的复用，如：方法调用、循环跳转、异常跳转等，所以具有这些功能的指令才能产生Safepoint</li>
+<li>Safepoint另一个需要考虑的问题是如何在GC发生时让所有线程（不包括JNI调用线程）都“跑”到最近的安全点上暂停下来<ul>
+<li>抢占式中断(Preemptive Suspention)<ul>
+<li>不需要程序线程配合，GC发生时，首先让所有线程中断，如果有不在安全点上的线程，则恢复执行“跑”到安全点后再次中断</li>
+</ul>
+</li>
+<li>主动式中断(Voluntary Suspention)<ul>
+<li>当GC发生时，不直接操作程序线程，仅仅设置一个标志，各个线程会轮询这个标志，发现标志为真则主动中断挂起，轮询标志和安全点是重合的，另外再加上创建对象需要分配内存的地方也需要轮询</li>
+<li>对于程序线程本身处于Sleep或Blocked状态时，没法主动轮询标志，此时需要<strong>安全区域(Safe Region)</strong>来处理</li>
+<li>线程执行到安全区域时，标识自己已经进入此区域，jvm在GC时不会管理这类线程，线程离开安全区域时，会检查系统是否完全了GC Roots来判断自己是否可以继续执行</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>根对象：JVM stack，native method stack，run-time constant pool, static references in method area, Clazz</li>
-<li>垃圾清理算法</li>
 </ul>
-<ol>
-<li>Mark-Sweep：标记清除，容易产生碎片，导致没有连续的物理空间存放较大对象，影响性能，需要定时碎片整理</li>
-<li>Copying：拷贝，效率很高，将内存一分为二，和新生代的surviv0+surviv1的机制一样，先将其中一个区域不需要回收的对象拷贝到另外一个区，同时还可以在另外一个区压缩解决碎片化问题，然后将之前的区域整个清理，针对垃圾比较多的情况，如新生代的s0+s1</li>
-<li>Mark-Compact：标记压缩，在清理的时候同时进行未回收对象的压缩，让未回收的对象尽量在连续的物理空间，减少碎片化，效率会稍低，针对垃圾不多的情况</li>
+</li>
 </ol>
-<ul>
-<li>垃圾回收器的选择指标</li>
+<h3 id="垃圾清理算法"><a href="#垃圾清理算法" class="headerlink" title="垃圾清理算法"></a>垃圾清理算法</h3><ol>
+<li>Mark-Sweep：标记清除<ul>
+<li>标记所有需要回收的对象，然后清除所有被标记的对象</li>
+<li>缺点<ol>
+<li>效率问题，标记和清除2个过程效率都不高，需要扫描所有对象，heap越大，GC越慢</li>
+<li>空间问题，容易产生碎片，导致没有连续的物理空间存放较大对象，影响性能，需要定时碎片整理</li>
+</ol>
+</li>
+<li><img src="/imgs/Mark-Sweep.png" alt=""></li>
 </ul>
-<ol>
-<li>吞吐量</li>
+</li>
+<li>Copying：拷贝<ul>
+<li>效率很高，将内存一分为二，新生代的surviv0+surviv1就是此算法实现，先将Eden和其中一个surviv区域不需要回收的对象拷贝到另外一个surviv区，同时还可以在另外一个surviv区压缩解决碎片化问题，然后将之前的Eden和surviv区域整个清理，针对垃圾比较多的情况，一般比例是8：1：1，这样可以保证浪费的内存只有10%</li>
+<li>缺点<ol>
+<li>成本非常高，可用内存损失一半</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Mark-Compact：标记压缩<ul>
+<li>在清理的时候同时进行未回收对象的压缩，让未回收的对象尽量在连续的物理空间，减少碎片化，效率会稍低，针对垃圾不多的情况</li>
+</ul>
+</li>
+<li>Generational：分代算法<ul>
+<li>目前主流GC算法，是1.2.3算法的结合体</li>
+<li>将heap分为新生代和老年代<ul>
+<li>新生代<ul>
+<li>eden<ul>
+<li>当eden满时，还存活的对象会被复制到from</li>
+</ul>
+</li>
+<li>fromsurvivor</li>
+<li>tosurvivor</li>
+</ul>
+</li>
+<li>老年代<ul>
+<li>存放了一次GC或多次GC还存活的对象</li>
+<li>多种垃圾收集器可以选择，每种垃圾收集器对应一种算法的具体实现，不同算法的特点不一，表现为：吞吐量、效率等</li>
+</ul>
+</li>
+<li>永久代<ul>
+<li>jdk8之后已经剔除</li>
+<li>并不属于heap，但是GC会涵盖这个区域</li>
+<li>对应于jdk8之后的meta space</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><img src="/imgs/Generational.png" alt=""></li>
+</ul>
+</li>
+</ol>
+<h3 id="垃圾回收器的选择指标"><a href="#垃圾回收器的选择指标" class="headerlink" title="垃圾回收器的选择指标"></a>垃圾回收器的选择指标</h3><ol>
+<li>吞吐量：GC时间占总运行时间最小，一段时间内，系统运行的任务量</li>
+<li>响应能力：单次任务执行的时间</li>
 <li>并发效率高</li>
 <li>STW（stop the world）少</li>
 </ol>
-<ul>
-<li>垃圾回收器类别</li>
+<h3 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h3><ul>
+<li><img src="/imgs/gc%E6%94%B6%E9%9B%86%E5%99%A8.png" alt=""></li>
+<li>并行和并发<ul>
+<li>并行（Parallel）：指多个收集器的线程同时执行，但用户线程等待</li>
+<li>并发（Concurrent）：收集器工作的同时，用户线程同时运行<ul>
+<li>并不代表解决了GC停顿问题，关键的步骤用户线程还是停顿状态，比如收集器标记垃圾的时候，但清除和用户线程可以同时运行</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ol>
-<li>Serial</li>
-<li>Parallel</li>
-<li>Concurrent Mark Sweep</li>
-<li>G1</li>
+<li>Serial<ul>
+<li>最早的收集器，收集时会STW（暂停所有用户线程），使用Copying算法</li>
+<li>jvm在Client模式下默认新生代收集器</li>
+<li>Young和Old都可以使用，Young中使用Copying算法，Old中使用Mark-Compact算法</li>
+<li>单线程、简单实用</li>
+</ul>
+</li>
+<li>ParNew<ul>
+<li>Serial多线程版本</li>
+<li>jvm在Server模式下默认的新生代收集器</li>
+<li>可以通过-XX:ParallelGCThreads来控制GC线程数，需要根据硬件CPU个数来设定</li>
+</ul>
+</li>
+<li>Parallel Scavenge<ul>
+<li>多线程收集器，复制算法</li>
+<li>对象分配规则、回收策略等都与ParNew有所不同</li>
+<li>以吞吐量最大化为目标，允许STW换取总吞吐量最大化</li>
+</ul>
+</li>
+<li>CMS(Concurrent Mark Sweep)<ul>
+<li>以最短停顿时间为目标的收集器，多用于互联网网站或B/S系统的服务端</li>
+<li>采用的是Mark-Sweep算法<ul>
+<li>初始标记(CMS initial mark)<ul>
+<li>会导致STW</li>
+<li>只标记GC Roots直接关联的对象，速度很快</li>
+</ul>
+</li>
+<li>并发标记(CMS concurrent mark)<ul>
+<li>GC Roots Tracing，标记根可达的所有对象</li>
+</ul>
+</li>
+<li>并发预先清理(CMS concurrent preclean)</li>
+<li>并发可中正预清理(CMS concurrent abortable preclean)</li>
+<li>重新标记(CMS remark)<ul>
+<li>会导致STW</li>
+<li>修正并发标记期间用户线程继续运作而导致标记产生变动的对象的标记记录，该过程比初始标记慢，但快于并发标记</li>
+</ul>
+</li>
+<li>并发清除(CMS concurrent sweep)</li>
+<li>并发重置(CMS concurrent reset)</li>
+</ul>
+</li>
+<li>只针对于老年代，一般结合ParNew一起使用</li>
+<li>Concurrent，GC线程和用户线程尽量并发工作</li>
+<li>多CPU环境下才有意义，使用-XX:+UseConcMarkSweepGC打开</li>
+<li>缺点<ul>
+<li>CMS会更多的占用CPU资源</li>
+<li>要保证用户线程并发运行，所以需要预留一部分空间给用户线程</li>
+<li>有碎片化问题，可能导致频繁Full GC</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>G1<ul>
+<li>Garbage First Collector</li>
+<li>概念<ul>
+<li>region：G1操作的heap的最小空间单元</li>
+<li>CSet：收集集合，一组可被回收的region集合</li>
+<li>RSet：RememberedSet已记忆集合<ul>
+<li>记录了其他region中的对象引用了本region对象的关系(points-into谁引用了我)，会额外占用region空间，是通过对card table的points-out封装成hash table来完成RSet的points-into结构，card table记录的是引用其他region的指针</li>
+<li><img src="/imgs/RSet.png" alt=""></li>
+<li>新生代中的region无需进行RSet记录，因为默认新生代全局扫描</li>
+</ul>
+</li>
+<li>Card table<ul>
+<li>将分区划分成了固定大小的连续区域，每个区为卡</li>
+</ul>
+</li>
+<li>三色标记算法<ul>
+<li><img src="/imgs/%E4%B8%89%E8%89%B2%E6%A0%87%E8%AE%B0%E6%B3%95.png" alt=""></li>
+<li>黑色：根对象，或者该对象与其依赖对象都被扫描（成员变量引用的对象）</li>
+<li>灰色：对象本身被扫描，其依赖对象没有被扫描</li>
+<li>白色：未被扫描对象，即不可达对象（垃圾对象）</li>
+<li>会导致与应用线程并发执行过程中导致标记错误，需要通过SATB来解决</li>
+</ul>
+</li>
+<li>Snapshot-At-The-Beginning(SATB)<ul>
+<li>在并发标记阶段使用的增量式标记算法</li>
+<li>主要解决<ul>
+<li>收集过程中，有新对象生成<ul>
+<li>通过TAMS(top-at-mark-start)来判断对象是否新生成</li>
+<li>region中有preTAMS和nextTAMS，在TAMS以上的就是新生成的，默认会被marked，认为是活的</li>
+</ul>
+</li>
+<li>收集过程中，有对象引用变更</li>
+</ul>
+</li>
+<li>开始标记时生成快照，标记存活对象</li>
+<li>并发标记时记录对象引用改变记录（在write barrier读屏障里把所有旧的引用所指向的对象标为非白色）</li>
+<li>可能存在浮动垃圾，下次将被收集</li>
+</ul>
+</li>
+<li>Humongous<ul>
+<li>存放巨型对象(对象大小大于region的50%)，如果一个H区无法满足，G1会找到连续区域来分配，如果没有，则会启动Full GC</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><img src="/imgs/g1heapstructure.png" alt=""><ul>
+<li>heap被划分为一个个相等大小且不连续的内存区域(regions)，每个region都有一个角色：eden、survivor、old</li>
+<li>每个角色的数量没有限定，可以动态变化</li>
+</ul>
+</li>
+<li>适用于多核CPU、大内存容量的服务端系统</li>
+<li>满足短时间GC停顿的同时达到较高吞吐量</li>
+<li>jdk7以上适用</li>
+<li>与CMS比较<ul>
+<li>可以和应用线程同时执行，STW几乎不会发生同CMS</li>
+<li>会自动整理剩余空间，不产生内存碎片（CMS只能在Full GC时，用STW的代价来整理，耗时更长）</li>
+<li>G1停顿时间可控，用户可以配置，G1会进行参考</li>
+<li>不牺牲系统吞吐量</li>
+<li>G1不会产生浮动垃圾，需要额外的内存开销（CMS并发标记会导致浮动垃圾）</li>
+</ul>
+</li>
+<li>采用Copying算法</li>
+<li>高效执行回收，优先执行那些大量对象可回收的区域(region)即回收性价比高的region</li>
+<li>垃圾多的region优先，名字由来G1</li>
+<li>G1GC模式<ul>
+<li>Young GC<ul>
+<li>会STW</li>
+<li>选定所有新生代的regions，通过控制region数量，来控制时间开销</li>
+<li>步骤<ul>
+<li>根扫描<ul>
+<li>静态和本地对象被扫描</li>
+</ul>
+</li>
+<li>更新RS<ul>
+<li>处理dirty card队列更新RS</li>
+</ul>
+</li>
+<li>处理RS<ul>
+<li>检测从年轻代指向老年代的对象</li>
+</ul>
+</li>
+<li>对象拷贝<ul>
+<li>拷贝存活的对象到Survivor或Old区域</li>
+</ul>
+</li>
+<li>处理引用队列<ul>
+<li>软、弱、虚引用队列处理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mixed GC<ul>
+<li>会STW</li>
+<li>选定所有新生代regions，外加根据global concurrent marking统计得到回收性价比高的region，通过控制region数量，来控制时间开销</li>
+<li>不是Full GC，只会回收部分老年代region</li>
+<li>如果Mxied GC无法继续进行（对象创建速度大于回收速度），则会使用SerialOld GC(Full GC)来收集整个GC heap，所以本质上，G1不提供Full GC</li>
+<li>global concurrent marking类似CMS，不同的是，它主要是服务Mixed GC，并不是GC过程的必要环节，分为4个步骤<ul>
+<li>初始标记(initial mark STW)</li>
+<li>并发标记(concurrent mark)</li>
+<li>重新标记(remark STW)</li>
+<li>清理(cleanup)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>G1主要模式<ul>
+<li>YGC<ul>
+<li>在Eden充满时触发，回收后region变为free region没有任何角色</li>
+</ul>
+</li>
+<li>并发阶段</li>
+<li>Mixed GC<ul>
+<li>由参数控制触发，另外也控制这哪些老年代region被选入CSet中<ul>
+<li>G1HeapWastePercent：在global concurrent marking之后，可以知道old region有多少需要被回收，在每次YGC之后和再次Mixed GC之前，会检查垃圾占比是否达到此参数，只有达到了，下次才会触发</li>
+<li>G1MixedGCLiveThresholdPercent：old region中存活对象占比，在此之下会纳入CSet</li>
+<li>G1MixedGCCountTarget：一次global concurrent marking之后，最多执行Mixed GC次数</li>
+<li>G1OldCSetRegionThresholdPercent：一次Mixed GC中能被选入CSet最多的old region数量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Full GC（一般G1出现问题才发生）</li>
+</ul>
+</li>
+<li>G1最佳实践<ul>
+<li>优化应用程序暂停时间参数</li>
+<li>不要设置新生代和老年代大小，G1有自动调节这2个区域大小的功能，并做了G1自带的优化，如果设置会影响G1的优化处理</li>
+<li>重点关注Evacuation Failure，类似于CMS中的存活对象晋升失败，heap中垃圾太多导致region之间无法copying，此时G1不得不退化成Full GC</li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
-<h2 id="tuning入门-java对象分配"><a href="#tuning入门-java对象分配" class="headerlink" title="tuning入门-java对象分配"></a>tuning入门-java对象分配</h2><ul>
-<li>栈上分配：出战之后对象自动清理，无需走GC</li>
+<h3 id="GC时机"><a href="#GC时机" class="headerlink" title="GC时机"></a>GC时机</h3><ul>
+<li>Scavenge GC：Minor GC<ul>
+<li>触发时机：新生代中新对象生成时，Eden满了</li>
+<li>理论上Eden区大多数对象会在此GC回收</li>
 </ul>
+</li>
+<li>Full GC<ul>
+<li>对整个JVM整理，包括Yonng、Old和Perm</li>
+<li>触发时机：Old满了、Perm满了、System.gc()</li>
+<li>会STW，效率很低，尽量规避</li>
+</ul>
+</li>
+</ul>
+<h3 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h3><pre><code>- 局部变量的声明放在了成员变量的位置，如果对象的存活时间过长，会导致成员变量的数据内存泄漏
+- io流或者jdbc等连接资源的关闭没有放在finally中，导致这些资源可能泄漏
+- 数组操作在初始化没有给定准确的数组长度，如果使用中涉及resize，会导致数组内容的copy扩容问题，如：ArrayList或HashMap，如果只是简单的顺序访问，不需要通过index随机访问，LinkedList效率更高，即使出现定义的长度不足，也不会resize，因为链表不需要连续内存空间</code></pre><h2 id="类加载"><a href="#类加载" class="headerlink" title="类加载"></a>类加载</h2><ul>
+<li>在java代码中，类型的加载、连接、初始化过程都是在程序运行期间完成的</li>
+<li>提供了更大的灵活性，增加了更多可能性<ol>
+<li>加载<ul>
+<li>查找并加载类的二进制数据</li>
+<li>放入运行时数据区的方法区内</li>
+</ul>
+</li>
+<li>连接<ul>
+<li>验证：确保被加载的类的正确性</li>
+<li>准备：为类的静态变量分配内存，并将其初始化为默认值</li>
+<li>解析：把类中的符号引用转化为直接引用<ul>
+<li>符号引用：包含语义信息，不涉及实现，同xml的namespace</li>
+<li>直接引用：具体的实现，包含类的真实内存地址信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>初始化<ul>
+<li>为类的静态变量赋予正确的初始值</li>
+<li>初始化一个类时，不会初始化它所实现的接口</li>
+<li>初始化一个接口是，也不会初始化它所继承的父接口</li>
+</ul>
+</li>
+<li>使用<ul>
+<li>类实例化</li>
+<li>给实例化对象分配内存</li>
+<li>给实例化对象变量赋默认值</li>
+<li>给实例化对象变量赋给定的值</li>
+<li>jvm会给每个类的实例生成至少一个初始化方法，这个初始化方法是&lt; init &gt;，每个构造方法都会生成一个&lt; init &gt;</li>
+</ul>
+</li>
+<li>卸载<ul>
+<li>jvm自带的加载器所加载的类是不会自动卸载的</li>
+<li>只有用户定义的加载器关联的类能被卸载掉</li>
+<li>GC或者类终止</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>所有jvm实现必须在每个类或接口被java程序”首次主动使用“时才初始化<ul>
+<li>助记符（是通过java底层类实现助记符的功能）：可以通过<code>javap -c</code>命令进行反编译查看<ol>
+<li>ldc：将int、float、string类型的常量从常量池推送到栈顶</li>
+<li>bipush：将单字节-128~127的常量推送到栈顶</li>
+<li>sipush：将双字节-32768~32767的常量推送到栈顶</li>
+<li>iconst_m1<del>5：将int类型的-1</del>5推送到栈顶</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>java对类的使用分2种<ol>
+<li>主动使用<ul>
+<li>创建类的对象</li>
+<li>访问类或接口的静态变量或方法</li>
+<li>反射：Class.forName(“<em>.</em>.*”)</li>
+<li>初始化子类</li>
+<li>java启动类</li>
+<li>动态语言支持，java.lang.invoke.MethodHandle实例解析的句柄对应的类</li>
+</ul>
+</li>
+<li>被动使用<ul>
+<li>其他情况属于被动使用</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><ul>
+<li><p>jvm自带加载器</p>
 <ol>
+<li>根类加载器（BootStrap）<ul>
+<li><code>System.out.println(System.getProperty("sun.boot.class.path"));</code></li>
+<li>负责加载jvm核心类库，如java.lang.*等，没有继承ClassLoader，jre/lib/rt.jar</li>
+</ul>
+</li>
+<li>拓展加载器（Extension）<ul>
+<li><code>System.out.println(System.getProperty("java.ext.dirs"));</code></li>
+<li>父加载器是bootstrap，从java.ext.dirs系统属性指定的目录中加载类库，或者从jdk中jre/lib/ext加载，是纯java类，继承ClassLoader</li>
+</ul>
+</li>
+<li>系统（应用）加载器（System/App）<ul>
+<li><code>System.out.println(System.getProperty("java.class.path"));</code></li>
+<li>父类是Extension，它从环境变量classpath或者系统属性java.class.path加载类库，它是用户自定义加载器的默认父加载器，纯java类，继承ClassLoader</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>线程上下文加载器<ul>
+<li>如果没有setContextClassLoader(ClassLoader cl),则默认获取的是父线程的上下文类加载器</li>
+<li>spi（service provider interface 服务提供接口）场景常用<ul>
+<li>jvm提供了spi，比如JDBC接口Connect、Statement或者JNDI等，具体的实现由不同厂商去实现</li>
+<li>出现原因：提供的spi接口是有bootstrap加载器加载，但是厂商的实现是放在程序classpath下由app加载器处理，由于双亲委派原则，会导致bootstrap加载器无法对app加载器加载的类可见</li>
+<li>处理方法：可以通过<code>Thread.currentThread().getContextClassLoader()</code>所指定的ClassLoader加载器获取其加载的类，改变了双亲委托原则</li>
+</ul>
+</li>
+<li>使用方法：set-&gt;get-&gt;usr-&gt;reset</li>
+<li>jdk1.6以后提供了ServiceLoader来进行spi接口以及实现类的加载，并保证这2者能相互可见，原理就是通过上下文加载器来完成的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>用户自定义加载器</p>
+<ul>
+<li>必须是java.lang.ClassLoader的子类</li>
+<li>可以定制类的加载方式</li>
+</ul>
+</li>
+<li><p>jvm类加载器会在某个类即将被使用时预先加载它，如果预先加载碰到class文件丢失，类加载器会在<strong>程序首次主动使用</strong>该类时报告错误（LinkageError），如果一直没有主动使用则不会报错</p>
+</li>
+<li><p>类加载器把类加载到jvm中，jdk1.2开始类加载采用双亲委托机制，优先有父加载器加载，加载不了则自己加载，每个加载器有且仅有一个父加载器，bootstrap除外</p>
+</li>
+<li><p>每个类加载器都有命名空间</p>
+<ul>
+<li>是由该加载器和所有父加载器所加载的类构成的</li>
+<li>所有父加载器无法加载到由子加载器命名空间的内容，反之可以</li>
+<li>类命名空间不同会导致相同类加载到jvm多次</li>
+<li>同一个命名空间的类相互可见</li>
+<li>子加载器包含父加载器的命名空间</li>
+<li>如果2个加载器之间没有直接或者间接父子关系，则各自加载的类相互不可见</li>
+</ul>
+</li>
+</ul>
+<h3 id="bytecode字节码"><a href="#bytecode字节码" class="headerlink" title="bytecode字节码"></a>bytecode字节码</h3><ul>
+<li><p>整体结构</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">名称</th>
+<th align="center">说明</th>
+<th align="center">长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">u4</td>
+<td align="center">magic</td>
+<td align="center">魔数，识别Class文件格式</td>
+<td align="center">4个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">minor_version</td>
+<td align="center">副版本号</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">major_version</td>
+<td align="center">主版本号</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">constant_pool_count</td>
+<td align="center">常量池计算器</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">cp_info</td>
+<td align="center">constant_pool</td>
+<td align="center">常量池</td>
+<td align="center">n个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">access_flags</td>
+<td align="center">访问标志</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">this_class</td>
+<td align="center">类索引</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">super_class</td>
+<td align="center">父类索引</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">interfaces_count</td>
+<td align="center">接口计数器</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">interfaces</td>
+<td align="center">接口索引集合</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">fields_count</td>
+<td align="center">字段个数</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">field_info</td>
+<td align="center">fields</td>
+<td align="center">字段集合</td>
+<td align="center">n个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">methods_count</td>
+<td align="center">方法计数器</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">method_info</td>
+<td align="center">methods</td>
+<td align="center">方法集合</td>
+<td align="center">m个字节</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">attributes_count</td>
+<td align="center">附加属性计数器</td>
+<td align="center">2个字节</td>
+</tr>
+<tr>
+<td align="center">attribute_info</td>
+<td align="center">attributes</td>
+<td align="center">attribute_info</td>
+<td align="center">n个字节</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>javap，jdk自带的字节码查看命令工具</p>
+<ul>
+<li>-c，显示助记符等信息</li>
+<li>-verbose，显示更多信息，包括：字节码的魔数、版本号、常量池、类信息、类的构造方法、类中的方法信息、类变量、成员变量等<ul>
+<li>魔数：所有的.class字节码文件的前4个字节都是魔数，魔数固定为：0x:<strong>CA FE BA BE</strong>,cafe babe咖啡宝贝，开创者自定义的</li>
+<li>jdk版本信息：接下来的4个字节，前2个字节<strong>00 00</strong>表示minor version(次版本号)，后2个字节<strong>00 34</strong>表示major version(主版本号)，52.0，52对应jdk8，所以该字节表示jdk1.8.0</li>
+<li>常量池（constant pool）：紧接着主版本号之后就是常量池入口，一个java类中定义的很多信息都是有常量池来维护和描述的，可以将常量池看做是Class文件的资源仓库，比如java类中定义的变量和方法信息，常量池中主要存储2类常量：字面量和符号引用<ul>
+<li>常量池结构：主要由常量池数量和数组（表结构）组成</li>
+<li>常量池数量：紧跟在主版本之后，占2个字节</li>
+<li>常量池数组：紧跟在数量之后，数组中每个元素的第一个数据都是一个u1类型，占用1个字节，数组元素个数等于常量池数量-1，索引为0是保留常量，表示NULL，不体现在数组中</li>
+<li>字面量：文本字符串，java中声明为final的常量值等</li>
+<li>符号引用：类和接口的全局限定名，字段的名称和描述符，方法的名称和描述符等<ul>
+<li>数据类型描述符：jvm都使用一个大写字母表示，如：B-byte,C-char,D-double,F-float,I-int,J-long,Z-boolean,V-void,L-对象类型,[-数组,[[-二维数组</li>
+<li>方法描述符：优先参数列表后返回值，如：String hello(int id, String name) - (I,Ljava/lang/String;)Ljava/lang/String;</li>
+<li>在类加载或第一次使用就转成了直接引用，这叫静态解析；还有一部分是由于java多态特性每次执行时动态转换为直接引用，这叫动态链接</li>
+<li>方法重载：当前类的静态行为，静态分派</li>
+<li>方法重写：当前类和父类的动态行为，涉及多态特性，动态分派</li>
+<li>动态分派：区分类方法和接口方法动态分派<ul>
+<li>virtual method table,vtable</li>
+<li>interface method table,itable</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>栈帧</p>
+<ul>
+<li>是帮助jvm执行方法调用和方法执行的数据结构</li>
+</ul>
+</li>
+</ul>
+<h2 id="tuning入门-java对象分配"><a href="#tuning入门-java对象分配" class="headerlink" title="tuning入门-java对象分配"></a>tuning入门-java对象分配</h2><ul>
+<li>栈上分配：出战之后对象自动清理，无需走GC<ol>
 <li>线程私有小对象</li>
 <li>无逃逸</li>
 <li>支持标量替换</li>
 <li>无需调整</li>
 </ol>
-<ul>
-<li>线程本地分配TLAB（Thread Local Allocation Buffer）</li>
-</ul>
-<ol>
+</li>
+<li>线程本地分配TLAB（Thread Local Allocation Buffer）<ol>
 <li>占用Eden区内存，默认1%</li>
 <li>多线程时不用竞争eden就可以申请空间，提高效率</li>
 <li>小对象</li>
 <li>无需调整</li>
 </ol>
-<ul>
-<li>老年代</li>
-</ul>
-<ol>
+</li>
+<li>老年代<ol>
 <li>大对象</li>
 </ol>
-<ul>
+</li>
 <li>Eden</li>
 </ul>
+<h3 id="jvm相关调试工具"><a href="#jvm相关调试工具" class="headerlink" title="jvm相关调试工具"></a>jvm相关调试工具</h3><ul>
+<li>jfr:java flight recoder，java飞行记录器</li>
+<li>jmx:java manager extension，java管理扩展</li>
+</ul>
+<ol>
+<li>GUI(可视化)工具<ol>
+<li>jconsole</li>
+<li>jvisualvm</li>
+<li>jmc<ul>
+<li>java mission control:java任务控制</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>命令工具<ol>
+<li>jmap<ul>
+<li>类加载器查看：<code>jmap -clstats pid</code></li>
+<li>查看堆信息：<code>jmap -heap pid</code></li>
+</ul>
+</li>
+<li>jstat<ul>
+<li>查看元空间信息：jstat -gc lvmid</li>
+</ul>
+</li>
+<li>jcmd<ul>
+<li>获取java进程可执行的操作：jcmd pid help</li>
+<li>获取java进程可执行的操作参数：jcmd pid help VM.flags</li>
+<li>获取java进程的VM参数信息：jcmd pid VM.flags</li>
+<li>查看jvm性能相关参数：jcmd pid PerCounter.print</li>
+<li>查看jvm启动时长：jcmd pid VM.uptime</li>
+<li>查看系统中类的统计信息：jcmd pid GC.class_histogram</li>
+<li>查看线程的堆栈信息：jcmd pid Thread.print</li>
+<li>导出heapdump文件：jcmd pid GC.heap_dump path/filename.hprof</li>
+<li>查看JVM属性信息：jcmd pid VM.system_properties</li>
+<li>查看目标jvm版本信息：jcmd pid VM.version</li>
+<li>查看jvm启动的命令行参数：jcmd pid VM.command_line</li>
+</ul>
+</li>
+<li>jps<ul>
+<li>获取jvm中进程pid和java信息</li>
+</ul>
+</li>
+<li>jstack<ul>
+<li>查看或是导出java程序中线程的堆栈信息</li>
+<li>jstack pid</li>
+</ul>
+</li>
+<li>jhat<ul>
+<li>分析堆转储文件，jhat path/filename.hprof，该命令会开启一个http服务，可以通过访问服务来分析hprof信息</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -639,10 +1385,10 @@ Na">
                     <div class="summary block-with-text">
                         
                             gradlegroovy实现的java构建工具无法实现maven的多级子项目创建
-## 
 
         document.querySelectorAll('.github-emoji')
-          .forEach(el =
+          .forEach(el => {
+
                         
                     </div>
                     <div class="publish-info">
@@ -782,7 +1528,7 @@ Na">
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">11.5k</span>
+                <span class="white-color">27.6k</span>
             
 
             

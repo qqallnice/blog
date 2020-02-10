@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.allnice.ml/"/>
-  <updated>2019-11-26T08:13:01.256Z</updated>
+  <updated>2020-01-28T12:54:30.061Z</updated>
   <id>https://www.allnice.ml/</id>
   
   <author>
@@ -15,6 +15,401 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多线程</title>
+    <link href="https://www.allnice.ml/2020/01/28/xue-xi-pian/duo-xian-cheng/"/>
+    <id>https://www.allnice.ml/2020/01/28/xue-xi-pian/duo-xian-cheng/</id>
+    <published>2020-01-28T09:56:00.000Z</published>
+    <updated>2020-01-28T12:54:30.061Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;多进程vs多线程&quot;&gt;&lt;a href=&quot;#多进程vs多线程&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="thread" scheme="https://www.allnice.ml/tags/thread/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>netty</title>
+    <link href="https://www.allnice.ml/2020/01/13/xue-xi-pian/netty/"/>
+    <id>https://www.allnice.ml/2020/01/13/xue-xi-pian/netty/</id>
+    <published>2020-01-13T01:58:10.000Z</published>
+    <updated>2020-02-01T14:50:10.303Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;deploy-web-161.sh&lt;/p&gt;
+&lt;h2 id=&quot;netty&quot;&gt;&lt;a href=&quot;#netty&quot; class=&quot;headerlink&quot; title=&quot;netty&quot;&gt;&lt;/a&gt;netty&lt;/h2&gt;&lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PLC</title>
+    <link href="https://www.allnice.ml/2020/01/08/xue-xi-pian/dian-zi-tong-xin/"/>
+    <id>https://www.allnice.ml/2020/01/08/xue-xi-pian/dian-zi-tong-xin/</id>
+    <published>2020-01-08T00:35:36.000Z</published>
+    <updated>2020-01-09T08:49:25.036Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;通信基础&quot;&gt;&lt;a href=&quot;#通信基础&quot; class=&quot;headerlink&quot; title=&quot;通信基础&quot;&gt;&lt;/a&gt;通信基础&lt;/h2&gt;&lt;h3 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="plc" scheme="https://www.allnice.ml/tags/plc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>maven</title>
+    <link href="https://www.allnice.ml/2020/01/06/zhuan-ye-pian/maven/"/>
+    <id>https://www.allnice.ml/2020/01/06/zhuan-ye-pian/maven/</id>
+    <published>2020-01-06T06:27:53.000Z</published>
+    <updated>2020-01-06T06:30:48.922Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;maven依赖管理2中方式&quot;&gt;&lt;a href=&quot;#maven依赖管理2中方式&quot; class=&quot;headerlink&quot; title=&quot;maven依赖管理2中方式&quot;&gt;&lt;/a&gt;maven依赖管理2中方式&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;import
+        
+      
+    
+    </summary>
+    
+    
+      <category term="maven" scheme="https://www.allnice.ml/tags/maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>msp</title>
+    <link href="https://www.allnice.ml/2020/01/03/xue-xi-pian/msp/"/>
+    <id>https://www.allnice.ml/2020/01/03/xue-xi-pian/msp/</id>
+    <published>2020-01-03T07:28:24.000Z</published>
+    <updated>2020-01-08T02:53:56.549Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;环境搭建&quot;&gt;&lt;a href=&quot;#环境搭建&quot; class=&quot;headerlink&quot; title=&quot;环境搭建&quot;&gt;&lt;/a&gt;环境搭建&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;软件&lt;/th&gt;
+&lt;th
+        
+      
+    
+    </summary>
+    
+    
+      <category term="msp" scheme="https://www.allnice.ml/tags/msp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux</title>
+    <link href="https://www.allnice.ml/2020/01/02/xue-xi-pian/linux/"/>
+    <id>https://www.allnice.ml/2020/01/02/xue-xi-pian/linux/</id>
+    <published>2020-01-02T06:22:54.000Z</published>
+    <updated>2020-01-06T14:51:18.702Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;命令&quot;&gt;&lt;a href=&quot;#命令&quot; class=&quot;headerlink&quot; title=&quot;命令&quot;&gt;&lt;/a&gt;命令&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;搜索安装的包&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ rpm -qa|grep
+        
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://www.allnice.ml/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql</title>
+    <link href="https://www.allnice.ml/2020/01/02/xue-xi-pian/mysql/"/>
+    <id>https://www.allnice.ml/2020/01/02/xue-xi-pian/mysql/</id>
+    <published>2020-01-02T05:49:56.000Z</published>
+    <updated>2020-01-02T08:23:33.570Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;centos7安装&quot;&gt;&lt;a href=&quot;#centos7安装&quot; class=&quot;headerlink&quot; title=&quot;centos7安装&quot;&gt;&lt;/a&gt;centos7安装&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;下载yum源&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ wget
+        
+      
+    
+    </summary>
+    
+    
+      <category term="mysql" scheme="https://www.allnice.ml/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python</title>
+    <link href="https://www.allnice.ml/2019/12/14/xue-xi-pian/python/"/>
+    <id>https://www.allnice.ml/2019/12/14/xue-xi-pian/python/</id>
+    <published>2019-12-14T15:12:52.000Z</published>
+    <updated>2019-12-16T06:28:03.827Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;python3&quot;&gt;&lt;a href=&quot;#python3&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://www.allnice.ml/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>wx</title>
+    <link href="https://www.allnice.ml/2019/12/11/xue-xi-pian/wei-xin-gong-zhong-hao/"/>
+    <id>https://www.allnice.ml/2019/12/11/xue-xi-pian/wei-xin-gong-zhong-hao/</id>
+    <published>2019-12-11T03:17:34.000Z</published>
+    <updated>2020-01-05T11:43:02.961Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;微信公众号&quot;&gt;&lt;a href=&quot;#微信公众号&quot; class=&quot;headerlink&quot; title=&quot;微信公众号&quot;&gt;&lt;/a&gt;微信公众号&lt;/h2&gt;&lt;h3 id=&quot;开发环境搭建&quot;&gt;&lt;a href=&quot;#开发环境搭建&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="wx" scheme="https://www.allnice.ml/tags/wx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>uni-app</title>
+    <link href="https://www.allnice.ml/2019/12/09/xue-xi-pian/uni-app/"/>
+    <id>https://www.allnice.ml/2019/12/09/xue-xi-pian/uni-app/</id>
+    <published>2019-12-09T04:06:00.000Z</published>
+    <updated>2019-12-10T06:24:08.349Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;uni-app&quot;&gt;&lt;a href=&quot;#uni-app&quot; class=&quot;headerlink&quot; title=&quot;uni-app&quot;&gt;&lt;/a&gt;uni-app&lt;/h2&gt;&lt;h3 id=&quot;微信小程序&quot;&gt;&lt;a href=&quot;#微信小程序&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="dcloud" scheme="https://www.allnice.ml/tags/dcloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>es6</title>
+    <link href="https://www.allnice.ml/2019/12/06/xue-xi-pian/es6/"/>
+    <id>https://www.allnice.ml/2019/12/06/xue-xi-pian/es6/</id>
+    <published>2019-12-06T02:14:06.000Z</published>
+    <updated>2019-12-10T06:49:34.457Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;es6&quot;&gt;&lt;a href=&quot;#es6&quot; class=&quot;headerlink&quot; title=&quot;es6&quot;&gt;&lt;/a&gt;es6&lt;/h2&gt;&lt;h3 id=&quot;ECMAScript&quot;&gt;&lt;a href=&quot;#ECMAScript&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="es6" scheme="https://www.allnice.ml/tags/es6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dcloud</title>
+    <link href="https://www.allnice.ml/2019/12/03/xue-xi-pian/dcloud/"/>
+    <id>https://www.allnice.ml/2019/12/03/xue-xi-pian/dcloud/</id>
+    <published>2019-12-03T03:01:38.000Z</published>
+    <updated>2019-12-04T04:18:27.915Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;uni-app&quot;&gt;&lt;a href=&quot;#uni-app&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="dcloud" scheme="https://www.allnice.ml/tags/dcloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac</title>
+    <link href="https://www.allnice.ml/2019/12/02/xue-xi-pian/mac-shi-yong-ji-qiao/"/>
+    <id>https://www.allnice.ml/2019/12/02/xue-xi-pian/mac-shi-yong-ji-qiao/</id>
+    <published>2019-12-02T07:35:17.000Z</published>
+    <updated>2020-02-01T11:04:07.107Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;mac&quot;&gt;&lt;a href=&quot;#mac&quot; class=&quot;headerlink&quot; title=&quot;mac&quot;&gt;&lt;/a&gt;mac&lt;/h2&gt;&lt;h3 id=&quot;基本命令快捷键&quot;&gt;&lt;a href=&quot;#基本命令快捷键&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="mac" scheme="https://www.allnice.ml/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zookeeper</title>
+    <link href="https://www.allnice.ml/2019/12/02/xue-xi-pian/zookeeper/"/>
+    <id>https://www.allnice.ml/2019/12/02/xue-xi-pian/zookeeper/</id>
+    <published>2019-12-02T07:28:35.000Z</published>
+    <updated>2019-12-09T14:46:17.915Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;基本命令&quot;&gt;&lt;a href=&quot;#基本命令&quot; class=&quot;headerlink&quot; title=&quot;基本命令&quot;&gt;&lt;/a&gt;基本命令&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;启动ZK服务   &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sh bin/zkServer.sh
+        
+      
+    
+    </summary>
+    
+    
+      <category term="zookeeper" scheme="https://www.allnice.ml/tags/zookeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kafka</title>
+    <link href="https://www.allnice.ml/2019/12/02/xue-xi-pian/kafka/"/>
+    <id>https://www.allnice.ml/2019/12/02/xue-xi-pian/kafka/</id>
+    <published>2019-12-02T06:54:46.000Z</published>
+    <updated>2019-12-09T14:44:48.519Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;kafka概述&quot;&gt;&lt;a href=&quot;#kafka概述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="kafka" scheme="https://www.allnice.ml/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis</title>
+    <link href="https://www.allnice.ml/2019/11/29/xue-xi-pian/redis/"/>
+    <id>https://www.allnice.ml/2019/11/29/xue-xi-pian/redis/</id>
+    <published>2019-11-29T06:27:32.000Z</published>
+    <updated>2020-02-10T07:27:49.516Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;redis&quot;&gt;&lt;a href=&quot;#redis&quot; class=&quot;headerlink&quot; title=&quot;redis&quot;&gt;&lt;/a&gt;redis&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Remote Dictionary
+        
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="https://www.allnice.ml/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>一建建筑</title>
@@ -45,7 +440,7 @@
     <link href="https://www.allnice.ml/2019/11/22/xue-xi-pian/fen-bu-shi-li-lun/"/>
     <id>https://www.allnice.ml/2019/11/22/xue-xi-pian/fen-bu-shi-li-lun/</id>
     <published>2019-11-22T02:17:52.000Z</published>
-    <updated>2019-11-26T07:06:32.033Z</updated>
+    <updated>2019-12-09T14:43:24.959Z</updated>
     
     <summary type="html">
     
@@ -97,7 +492,7 @@
     <link href="https://www.allnice.ml/2019/11/20/xue-xi-pian/io-mo-xing/"/>
     <id>https://www.allnice.ml/2019/11/20/xue-xi-pian/io-mo-xing/</id>
     <published>2019-11-20T02:48:20.000Z</published>
-    <updated>2019-11-21T06:23:34.699Z</updated>
+    <updated>2020-01-10T03:43:22.284Z</updated>
     
     <summary type="html">
     
@@ -113,294 +508,6 @@
     
     
       <category term="io" scheme="https://www.allnice.ml/tags/io/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jvm调优</title>
-    <link href="https://www.allnice.ml/2019/11/20/xue-xi-pian/jvm-diao-you/"/>
-    <id>https://www.allnice.ml/2019/11/20/xue-xi-pian/jvm-diao-you/</id>
-    <published>2019-11-20T02:35:02.000Z</published>
-    <updated>2019-11-20T08:24:44.633Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;jdk、jre和jvm&quot;&gt;&lt;a href=&quot;#jdk、jre和jvm&quot; class=&quot;headerlink&quot; title=&quot;jdk、jre和jvm&quot;&gt;&lt;/a&gt;jdk、jre和jvm&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/imgs/jdk.png&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="jvm" scheme="https://www.allnice.ml/tags/jvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>yws micro service platform</title>
-    <link href="https://www.allnice.ml/2019/11/11/xue-xi-pian/yws-micro-service-platform/"/>
-    <id>https://www.allnice.ml/2019/11/11/xue-xi-pian/yws-micro-service-platform/</id>
-    <published>2019-11-11T04:53:22.000Z</published>
-    <updated>2019-11-26T06:17:47.308Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;gradle&quot;&gt;&lt;a href=&quot;#gradle&quot; class=&quot;headerlink&quot; title=&quot;gradle&quot;&gt;&lt;/a&gt;gradle&lt;/h2&gt;&lt;p&gt;groovy实现的java构建工具&lt;br&gt;无法实现maven的多级子项目创建&lt;/p&gt;
-&lt;p&gt;##
-        
-      
-    
-    </summary>
-    
-    
-      <category term="micro service" scheme="https://www.allnice.ml/tags/micro-service/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Security OAuth2</title>
-    <link href="https://www.allnice.ml/2019/11/07/xue-xi-pian/spring-security-oauth2/"/>
-    <id>https://www.allnice.ml/2019/11/07/xue-xi-pian/spring-security-oauth2/</id>
-    <published>2019-11-07T09:18:38.000Z</published>
-    <updated>2019-11-26T06:17:46.067Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Spring-Security-OAuth2&quot;&gt;&lt;a href=&quot;#Spring-Security-OAuth2&quot; class=&quot;headerlink&quot; title=&quot;Spring Security OAuth2&quot;&gt;&lt;/a&gt;Spring Security
-        
-      
-    
-    </summary>
-    
-    
-      <category term="oauth2" scheme="https://www.allnice.ml/tags/oauth2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ocp系统</title>
-    <link href="https://www.allnice.ml/2019/11/07/xue-xi-pian/ocp-xi-tong/"/>
-    <id>https://www.allnice.ml/2019/11/07/xue-xi-pian/ocp-xi-tong/</id>
-    <published>2019-11-07T08:33:48.000Z</published>
-    <updated>2019-11-26T06:17:40.522Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;lombok&quot;&gt;&lt;a href=&quot;#lombok&quot; class=&quot;headerlink&quot; title=&quot;lombok&quot;&gt;&lt;/a&gt;lombok&lt;/h2&gt;&lt;p&gt;简化实体类的编码，编译后自动生成set、get器等重复性代码，开发时可忽略&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-    
-      <category term="micro service" scheme="https://www.allnice.ml/tags/micro-service/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ssh原理</title>
-    <link href="https://www.allnice.ml/2019/11/07/zhuan-ye-pian/ssh-yuan-li/"/>
-    <id>https://www.allnice.ml/2019/11/07/zhuan-ye-pian/ssh-yuan-li/</id>
-    <published>2019-11-07T07:09:04.000Z</published>
-    <updated>2019-11-07T07:20:08.399Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;搭建免密访问&quot;&gt;&lt;a href=&quot;#搭建免密访问&quot; class=&quot;headerlink&quot; title=&quot;搭建免密访问&quot;&gt;&lt;/a&gt;搭建免密访问&lt;/h2&gt;&lt;h3 id=&quot;通过rsa非对称算法生成相关信息&quot;&gt;&lt;a href=&quot;#通过rsa非对称算法生成相关信息&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>区块链概念</title>
-    <link href="https://www.allnice.ml/2019/11/07/xue-xi-pian/qu-kuai-lian-gai-nian/"/>
-    <id>https://www.allnice.ml/2019/11/07/xue-xi-pian/qu-kuai-lian-gai-nian/</id>
-    <published>2019-11-07T03:42:52.000Z</published>
-    <updated>2019-11-26T07:06:37.140Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;比特币&quot;&gt;&lt;a href=&quot;#比特币&quot; class=&quot;headerlink&quot; title=&quot;比特币&quot;&gt;&lt;/a&gt;比特币&lt;/h2&gt;&lt;h3 id=&quot;是一种数字或者叫电子货币&quot;&gt;&lt;a href=&quot;#是一种数字或者叫电子货币&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="区块链" scheme="https://www.allnice.ml/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>wms系统搭建</title>
-    <link href="https://www.allnice.ml/2019/11/05/gong-zuo-pian/wms-xi-tong-da-jian/"/>
-    <id>https://www.allnice.ml/2019/11/05/gong-zuo-pian/wms-xi-tong-da-jian/</id>
-    <published>2019-11-05T07:19:21.000Z</published>
-    <updated>2019-11-07T07:03:01.965Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;服务器&quot;&gt;&lt;a href=&quot;#服务器&quot; class=&quot;headerlink&quot; title=&quot;服务器&quot;&gt;&lt;/a&gt;服务器&lt;/h2&gt;&lt;h3 id=&quot;中间件等三方app服务器&quot;&gt;&lt;a href=&quot;#中间件等三方app服务器&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>nginx小记</title>
-    <link href="https://www.allnice.ml/2019/10/16/zhuan-ye-pian/nginx-xiao-ji/"/>
-    <id>https://www.allnice.ml/2019/10/16/zhuan-ye-pian/nginx-xiao-ji/</id>
-    <published>2019-10-16T07:49:06.000Z</published>
-    <updated>2019-11-07T07:09:20.506Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;配置nginx-conf&quot;&gt;&lt;a href=&quot;#配置nginx-conf&quot; class=&quot;headerlink&quot; title=&quot;配置nginx.conf&quot;&gt;&lt;/a&gt;配置nginx.conf&lt;/h2&gt;&lt;pre class=&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="nginx" scheme="https://www.allnice.ml/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jenkins小记</title>
-    <link href="https://www.allnice.ml/2019/09/11/zhuan-ye-pian/jenkins-xiao-ji/"/>
-    <id>https://www.allnice.ml/2019/09/11/zhuan-ye-pian/jenkins-xiao-ji/</id>
-    <published>2019-09-11T03:43:49.000Z</published>
-    <updated>2019-11-07T07:09:20.506Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;jenkins概念&quot;&gt;&lt;a href=&quot;#jenkins概念&quot; class=&quot;headerlink&quot; title=&quot;jenkins概念&quot;&gt;&lt;/a&gt;jenkins概念&lt;/h2&gt;&lt;h3 id=&quot;持续集成、持续部署、持续交付&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="jenkisn" scheme="https://www.allnice.ml/tags/jenkisn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git基本命令</title>
-    <link href="https://www.allnice.ml/2019/09/06/zhuan-ye-pian/git-ji-ben-ming-ling/"/>
-    <id>https://www.allnice.ml/2019/09/06/zhuan-ye-pian/git-ji-ben-ming-ling/</id>
-    <published>2019-09-06T09:37:25.000Z</published>
-    <updated>2019-11-07T07:09:20.505Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;git-init&quot;&gt;&lt;a href=&quot;#git-init&quot; class=&quot;headerlink&quot; title=&quot;git init&quot;&gt;&lt;/a&gt;git init&lt;/h2&gt;&lt;p&gt;初始化本地仓库&lt;/p&gt;
-&lt;h2 id=&quot;git-config&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="git" scheme="https://www.allnice.ml/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo基本命令</title>
-    <link href="https://www.allnice.ml/2019/09/03/zhuan-ye-pian/hexo-ji-ben-ming-ling/"/>
-    <id>https://www.allnice.ml/2019/09/03/zhuan-ye-pian/hexo-ji-ben-ming-ling/</id>
-    <published>2019-09-03T08:58:21.000Z</published>
-    <updated>2019-11-07T07:09:20.506Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;init&quot;&gt;&lt;a href=&quot;#init&quot; class=&quot;headerlink&quot; title=&quot;init&quot;&gt;&lt;/a&gt;init&lt;/h2&gt;&lt;p&gt;&lt;code&gt;$ hexo init [folder]&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;new&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="https://www.allnice.ml/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown语法</title>
-    <link href="https://www.allnice.ml/2019/08/31/zhuan-ye-pian/markdown-yu-fa/"/>
-    <id>https://www.allnice.ml/2019/08/31/zhuan-ye-pian/markdown-yu-fa/</id>
-    <published>2019-08-31T09:44:32.000Z</published>
-    <updated>2019-11-07T07:09:20.506Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;二级标题&quot;&gt;&lt;a href=&quot;#二级标题&quot; class=&quot;headerlink&quot; title=&quot;二级标题&quot;&gt;&lt;/a&gt;二级标题&lt;/h2&gt;&lt;pre class=&quot; language-markdown&quot;&gt;&lt;code
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Markdown" scheme="https://www.allnice.ml/tags/Markdown/"/>
     
   </entry>
   

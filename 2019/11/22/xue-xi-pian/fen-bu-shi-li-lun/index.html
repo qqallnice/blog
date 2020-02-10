@@ -415,14 +415,14 @@ P:Partition tolerance，分区容错性理解CAP理论的最简单方式是想�
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        209
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -442,12 +442,136 @@ P:Partition tolerance，分区容错性理解CAP理论的最简单方式是想�
 <li>C:Consistent，一致性</li>
 <li>A:Available，可用性</li>
 <li>P:Partition tolerance，分区容错性<br>理解CAP理论的最简单方式是想象两个节点分处分区两侧。允许至少一个节点更新状态会导致数据不一致，即丧失了C性质。如果为了保证数据一致性，将分区一侧的节点设置为不可用，那么又丧失了A性质。除非两个节点可以互相通信，才能既保证C又保证A，这又会导致丧失P性质。</li>
+<li><a href="https://mwhittaker.github.io/blog/an_illustrated_proof_of_the_cap_theorem/" target="_blank" rel="noopener">https://mwhittaker.github.io/blog/an_illustrated_proof_of_the_cap_theorem/</a></li>
 </ul>
 <h2 id="BASE"><a href="#BASE" class="headerlink" title="BASE"></a>BASE</h2><ul>
 <li>BA:Basically Available，基本可用</li>
-<li>S:Soft State，软状态</li>
+<li>S:Soft State，软状态，属于非0非1的中间态</li>
 <li>E:Eventually Consistent，最终一致性</li>
+<li>是对AP模式的一种拓展</li>
 </ul>
+<h2 id="本地事务"><a href="#本地事务" class="headerlink" title="本地事务"></a>本地事务</h2><ul>
+<li>A(Atomic)：原子性，构成事务的所有操作要么全部成功，要么全部失败，关注的是状态</li>
+<li>C(Consistency)：一致性，关注的是数据的可见性，和多线程中的可见性一致，中间状态的数据对外部不可见，只有最初状态和最终状态的数据对外可见</li>
+<li>I(Isolation)：隔离性，各个事务是并发执行的，之间需要具备一定隔离性</li>
+<li>D(Durability)：持久性，事务操作成功后，需要将数据的改变持久化</li>
+</ul>
+<h2 id="分布式事务解决方案"><a href="#分布式事务解决方案" class="headerlink" title="分布式事务解决方案"></a>分布式事务解决方案</h2><ol>
+<li>2PC</li>
+</ol>
+<ul>
+<li>2阶段提交，Prepare phase，Commit phase</li>
+<li>Prepare phase：在准备阶段，各个数据库参与者作为本地事务会记录Undo/Redo日志</li>
+</ul>
+<h3 id="XA方案"><a href="#XA方案" class="headerlink" title="XA方案"></a>XA方案</h3><ul>
+<li>国际开放标准组织Open Group定义了DTP(Distributed Transaction Processing Reference Model)分布式事务标准模型</li>
+<li>DTP包含的角色：<ul>
+<li>AP：应用程序</li>
+<li>RM：自然服务器（各个数据库服务器）</li>
+<li>TM：事务管理器</li>
+<li>DTP定义了TM和RM之间通讯接口规范是XA</li>
+</ul>
+</li>
+<li>角色交互方式<ul>
+<li>TM向AP提供应用程序编程接口，AP通过TM提交或回滚事务</li>
+<li>TM通过XA接口通知RM数据库事务的开始、结束以及提交、回滚等</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>需要本地数据库支持XA协议</li>
+<li>准备阶段的资源锁定需要等到2个阶段全部执行完才能释放，性能较差</li>
+</ul>
+</li>
+</ul>
+<h3 id="Seata方案"><a href="#Seata方案" class="headerlink" title="Seata方案"></a>Seata方案</h3><ul>
+<li>在应用层进行全局事务控制，不会长时间占用连接资源</li>
+<li>目前支持2PC和TCC2种模式</li>
+<li>角色<ul>
+<li>TC(transaction coordinator):事务协调者</li>
+<li>TM(transaction manager):事务管理者</li>
+<li>RM(resource manager):资源服务器</li>
+</ul>
+</li>
+<li>角色交互<br><img src="/imgs/seata%E6%B5%81%E7%A8%8B.png" alt=""></li>
+</ul>
+<ol start="2">
+<li>TCC</li>
+</ol>
+<ul>
+<li>Try、Commit、Cancel</li>
+<li>空回滚<ul>
+<li>T没执行Cancel先执行了</li>
+</ul>
+</li>
+<li>幂等<ul>
+<li>多次执行commit</li>
+</ul>
+</li>
+<li>悬挂<ul>
+<li>Cancle在T先执行</li>
+</ul>
+</li>
+<li>事务控制交给业务逻辑的代码层，可以更加灵活处理分布式事务相关异常问题</li>
+<li>减少对数据库连接资源或数据锁定的时间，增大了系统的吞吐量</li>
+</ul>
+<h2 id="可靠消息最终一致性方案"><a href="#可靠消息最终一致性方案" class="headerlink" title="可靠消息最终一致性方案"></a>可靠消息最终一致性方案</h2><ol>
+<li>本地消息表方案</li>
+</ol>
+<ul>
+<li>在本地数据库中增加一个消息表，每次操作完一个业务就同步增加一个消息</li>
+<li>通过定时任务往消息中间件中同步本地消息表的记录</li>
+<li>中间件推送消息给消费方，通过ack机制进行消息确认，以确保消息被成功消费</li>
+</ul>
+<ol start="2">
+<li>事务消息机制</li>
+</ol>
+<ul>
+<li>张三给李四转钱</li>
+<li>MQ发起方发送消息给MQServer（李四加钱）</li>
+<li>MQServer接受消息并标记为不可消费，然后回复发起方成功接到消息</li>
+<li>MQ发起方执行张三扣款的本地事务，如果成功则通知MQServer可以消费消息，失败则删除消息</li>
+<li>成功之后MQ消费方可以正常消费消息</li>
+</ul>
+<h2 id="最大努力通知"><a href="#最大努力通知" class="headerlink" title="最大努力通知"></a>最大努力通知</h2><ol>
+<li>与可靠消息方案区别</li>
+</ol>
+<ul>
+<li>可靠消息是由发起方保证一致性，最大努力是由接收方保证</li>
+<li>可靠消息主要处理的是交易过程的场景，最大努力处理的是交易后的一种通知场景</li>
+<li>最大努力需要提供回查接口给接受方进行消息的查询</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">2PC</th>
+<th align="center">TCC</th>
+<th align="center">可靠消息</th>
+<th align="center">最大努力通知</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">一致性</td>
+<td align="center">强一致性</td>
+<td align="center">最终一致性</td>
+<td align="center">最终一致性</td>
+<td align="center">最终一致性</td>
+</tr>
+<tr>
+<td align="left">吞吐量</td>
+<td align="center">低</td>
+<td align="center">中</td>
+<td align="center">高</td>
+<td align="center">高</td>
+</tr>
+<tr>
+<td align="left">实现复杂度</td>
+<td align="center">易</td>
+<td align="center">难</td>
+<td align="center">中</td>
+<td align="center">易</td>
+</tr>
+</tbody></table>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -730,7 +854,7 @@ P:Partition tolerance，分区容错性理解CAP理论的最简单方式是想�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">11.5k</span>
+                <span class="white-color">27.6k</span>
             
 
             

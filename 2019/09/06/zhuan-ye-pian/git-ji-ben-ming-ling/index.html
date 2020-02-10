@@ -5,9 +5,15 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="git基本命令, it, java, js">
-    <meta name="description" content="git init初始化本地仓库
-git config配置git全局信息$ git config --global user.name &#39;name&#39;$ git config --global user.email &#39;email&#39;
-git ad">
+    <meta name="description" content="git init
+初始化本地仓库
+
+git config
+配置git全局信息
+$ git config --global user.name &#39;name&#39;
+$ git config --global user.email &#39;email&#39;
+
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,7 +420,7 @@ git ad">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        303
+                        315
                     </div>
                     
 
@@ -437,19 +443,93 @@ git ad">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2><p>初始化本地仓库</p>
-<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>配置git全局信息<br><code>$ git config --global user.name 'name'</code><br><code>$ git config --global user.email 'email'</code></p>
-<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><p><code>$ git add &lt;filename&gt;</code><br>添加指定文件：<br><code>$ git add .</code><br>添加目录下所有文件</p>
-<h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h2><p><code>$ git rm --cached &lt;filename&gt;</code><br>删除添加的指定文件</p>
-<h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><p>查看添加的文件队列</p>
-<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><p>默认会弹出编辑日志框<br><code>$ git commit -m 'log'</code><br>直接指定日志内容提交</p>
-<h2 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h2><p><code>$ git remote add &lt;SSH URO or HTTP URL&gt;</code><br><code>$ git remote add origin remoteUrl</code><br>添加远程仓库<br><code>$ git remote -v</code><br>查看绑定的远程仓库<br><code>$ git remote remove &lt;remoteName&gt;</code><br><code>$ git remote remove origin</code></p>
-<h2 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h2><p><code>$ git push -u origin master</code><br>推送项目到远程仓库</p>
-<h2 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h2><p>从远程仓库拉取项目（同步）<br><code>$ git pull origin master --allow-unrelated-histories</code><br>将本地仓库和远程仓库进行关联</p>
-<h2 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h2><p>从远程仓库拉取项目（从无到有）</p>
-<h2 id="git-branch"><a href="#git-branch" class="headerlink" title="git branch"></a>git branch</h2><p><code>$ git branch test</code><br>创建分支：test</p>
-<h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><p><code>$ git checkout test</code><br>切换到test分支</p>
-<h2 id="git-merge"><a href="#git-merge" class="headerlink" title="git merge"></a>git merge</h2><p><code>$ git merge test</code><br>合并test分支内容到主干</p>
+                <h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2><ul>
+<li>初始化本地仓库</li>
+</ul>
+<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><ul>
+<li>配置git全局信息<ul>
+<li><code>$ git config --global user.name 'name'</code></li>
+<li><code>$ git config --global user.email 'email'</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><ul>
+<li>添加指定文件：<ul>
+<li><code>$ git add &lt;filename&gt;</code></li>
+</ul>
+</li>
+<li>添加目录下所有文件<ul>
+<li><code>$ git add .</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h2><ul>
+<li>删除添加的指定文件<ul>
+<li><code>$ git rm --cached &lt;filename&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><ul>
+<li>查看添加的文件队列</li>
+</ul>
+<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><ul>
+<li>默认会弹出编辑日志框</li>
+<li>直接指定日志内容提交<ul>
+<li><code>$ git commit -m 'log'</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h2><ul>
+<li>添加远程仓库<ul>
+<li><code>$ git remote add &lt;SSH URO or HTTP URL&gt;</code></li>
+<li><code>$ git remote add origin remoteUrl</code></li>
+</ul>
+</li>
+<li>查看绑定的远程仓库<ul>
+<li><code>$ git remote -v</code></li>
+<li><code>$ git remote remove &lt;remoteName&gt;</code></li>
+<li><code>$ git remote remove origin</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h2><ul>
+<li>推送项目到远程仓库<ul>
+<li><code>$ git push -u origin master</code></li>
+</ul>
+</li>
+<li>强制提交<ul>
+<li><code>$ git push origin master -f</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h2><ul>
+<li>从远程仓库拉取项目（同步）</li>
+<li>将本地仓库和远程仓库进行关联<ul>
+<li><code>$ git pull origin master --allow-unrelated-histories</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h2><ul>
+<li>从远程仓库拉取项目（从无到有）</li>
+</ul>
+<h2 id="git-branch"><a href="#git-branch" class="headerlink" title="git branch"></a>git branch</h2><ul>
+<li>创建分支：test<ul>
+<li><code>$ git branch test</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h2><ul>
+<li>切换到test分支<ul>
+<li><code>$ git checkout test</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="git-merge"><a href="#git-merge" class="headerlink" title="git merge"></a>git merge</h2><ul>
+<li>合并test分支内容到主干<ul>
+<li><code>$ git merge test</code></li>
+</ul>
+</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -573,10 +653,17 @@ jenkins+svn
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            init$ hexo init [folder]
+                            hexo
+安装hexo客户端
+$ cnpm install hexo-cli -g
+
+init
+创建hexo博客目录
+$ hexo init [folder]
+
 new$ hexo new [layout] &lt;title&gt;
 
-layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件名)，该目录下存放的是模板文件
+l
                         
                     </div>
                     <div class="publish-info">
@@ -716,7 +803,7 @@ layout: 对应网站目录/scaffolds/下面的md文件对应的类型(md文件�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">11.5k</span>
+                <span class="white-color">27.6k</span>
             
 
             

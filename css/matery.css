@@ -953,7 +953,7 @@ article .article-tags .chip {
 }
 
 #articleContent blockquote p {
-    text-indent: 0.2rem;
+    /* text-indent: 0.2rem; */
 }
 
 #articleContent a {

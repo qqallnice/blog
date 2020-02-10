@@ -4,8 +4,28 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="wms系统搭建, it, java, js">
-    <meta name="description" content="服务器中间件等三方app服务器wms服务器中间件等三方服务jenkinsnginxzookeeperredisxxljobapollonexussvn数据库服务oraclemysql用户权限服务wms服务基础服务开关服务日志服务入库服务库存">
+    <meta name="keywords" content="PLC, it, java, js">
+    <meta name="description" content="通信基础基础知识
+基带和频带
+通信协议3要素通信接口标准
+RS232
+RS422
+RS485
+
+通信格式
+对一个字符的通信格式定义
+波特率
+奇偶校验位
+起始位
+数据位
+停止位个数
+7E1
+数据区7个，E：偶校验，停止位1个
+
+
+8E2
+
+数">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +33,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>wms系统搭建 | allnice</title>
+    <title>PLC | allnice</title>
     <link rel="icon" type="image/png" href="/sitefavicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -273,13 +293,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        wms系统搭建
+                        PLC
                     </div>
                 </div>
             </div>
@@ -388,9 +408,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/plc/" target="_blank">
+                                <span class="chip bg-color">plc</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -401,21 +425,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-05
+                    2020-01-08
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        145
+                        872
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        3 分
                     </div>
                     
                 
@@ -431,7 +455,180 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><h3 id="中间件等三方app服务器"><a href="#中间件等三方app服务器" class="headerlink" title="中间件等三方app服务器"></a>中间件等三方app服务器</h3><h3 id="wms服务器"><a href="#wms服务器" class="headerlink" title="wms服务器"></a>wms服务器</h3><h2 id="中间件等三方服务"><a href="#中间件等三方服务" class="headerlink" title="中间件等三方服务"></a>中间件等三方服务</h2><h3 id="jenkins"><a href="#jenkins" class="headerlink" title="jenkins"></a>jenkins</h3><h3 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h3><h3 id="zookeeper"><a href="#zookeeper" class="headerlink" title="zookeeper"></a>zookeeper</h3><h3 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h3><h3 id="xxljob"><a href="#xxljob" class="headerlink" title="xxljob"></a>xxljob</h3><h3 id="apollo"><a href="#apollo" class="headerlink" title="apollo"></a>apollo</h3><h3 id="nexus"><a href="#nexus" class="headerlink" title="nexus"></a>nexus</h3><h3 id="svn"><a href="#svn" class="headerlink" title="svn"></a>svn</h3><h2 id="数据库服务"><a href="#数据库服务" class="headerlink" title="数据库服务"></a>数据库服务</h2><h3 id="oracle"><a href="#oracle" class="headerlink" title="oracle"></a>oracle</h3><h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><h2 id="用户权限服务"><a href="#用户权限服务" class="headerlink" title="用户权限服务"></a>用户权限服务</h2><h2 id="wms服务"><a href="#wms服务" class="headerlink" title="wms服务"></a>wms服务</h2><h3 id="基础服务"><a href="#基础服务" class="headerlink" title="基础服务"></a>基础服务</h3><h3 id="开关服务"><a href="#开关服务" class="headerlink" title="开关服务"></a>开关服务</h3><h3 id="日志服务"><a href="#日志服务" class="headerlink" title="日志服务"></a>日志服务</h3><h3 id="入库服务"><a href="#入库服务" class="headerlink" title="入库服务"></a>入库服务</h3><h3 id="库存服务"><a href="#库存服务" class="headerlink" title="库存服务"></a>库存服务</h3><h3 id="出库服务"><a href="#出库服务" class="headerlink" title="出库服务"></a>出库服务</h3><h3 id="补货服务"><a href="#补货服务" class="headerlink" title="补货服务"></a>补货服务</h3><h3 id="报损服务"><a href="#报损服务" class="headerlink" title="报损服务"></a>报损服务</h3><h3 id="加工服务"><a href="#加工服务" class="headerlink" title="加工服务"></a>加工服务</h3><h3 id="报表服务"><a href="#报表服务" class="headerlink" title="报表服务"></a>报表服务</h3><h2 id="monitor服务"><a href="#monitor服务" class="headerlink" title="monitor服务"></a>monitor服务</h2><h2 id="job服务"><a href="#job服务" class="headerlink" title="job服务"></a>job服务</h2><h3 id="数据同步job"><a href="#数据同步job" class="headerlink" title="数据同步job"></a>数据同步job</h3><h2 id="短信服务"><a href="#短信服务" class="headerlink" title="短信服务"></a>短信服务</h2><h2 id="邮件服务"><a href="#邮件服务" class="headerlink" title="邮件服务"></a>邮件服务</h2><script>
+                <h2 id="通信基础"><a href="#通信基础" class="headerlink" title="通信基础"></a>通信基础</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ul>
+<li>基带和频带</li>
+<li><h2 id="通信协议3要素"><a href="#通信协议3要素" class="headerlink" title="通信协议3要素"></a>通信协议3要素</h2><h3 id="通信接口标准"><a href="#通信接口标准" class="headerlink" title="通信接口标准"></a>通信接口标准</h3></li>
+<li>RS232</li>
+<li>RS422</li>
+<li>RS485</li>
+</ul>
+<h3 id="通信格式"><a href="#通信格式" class="headerlink" title="通信格式"></a>通信格式</h3><ul>
+<li>对一个字符的通信格式定义</li>
+<li>波特率</li>
+<li>奇偶校验位</li>
+<li>起始位</li>
+<li>数据位</li>
+<li>停止位个数</li>
+<li>7E1<ul>
+<li>数据区7个，E：偶校验，停止位1个</li>
+</ul>
+</li>
+<li>8E2</li>
+</ul>
+<h3 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h3><ul>
+<li>帧<ul>
+<li>一个完整的信息成为一帧</li>
+<li>帧传送是一个字符一个字符可以间隔发送，每个字符是从低位到高位一位一位连续发送</li>
+</ul>
+</li>
+<li>HDLC（高级数据链路控制）数据格式标准<ul>
+<li>起始码：信息帧的起始边界</li>
+<li>地址码：设备在网络中的站址</li>
+<li>控制码：方法，表示做什么</li>
+<li>信息码：入参，表示怎么做</li>
+<li>校验码：对参与校验的数据进行校验所形成的码</li>
+<li>停止码：信息帧的结束边界</li>
+</ul>
+</li>
+</ul>
+<h3 id="MODBUS通信协议"><a href="#MODBUS通信协议" class="headerlink" title="MODBUS通信协议"></a>MODBUS通信协议</h3><ul>
+<li>基于RS485总线协议</li>
+<li>主从式串行异步半双工通信协议<ul>
+<li>主站可以和从站双向通信，从站之间不能直接通信，一个时刻主站只能和一个从站通信</li>
+<li>广播方式可以实现主站和所有从站同时通信，不过不能收到从站回应</li>
+</ul>
+</li>
+<li>数据格式<ul>
+<li>起始码：固定</li>
+<li>地址码：固定</li>
+<li>功能码：固定<ul>
+<li><table>
+<thead>
+<tr>
+<th>功能码</th>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H01</td>
+<td>读线圈状态</td>
+<td>取输出开关量状态</td>
+</tr>
+<tr>
+<td>H02</td>
+<td>读输入状态</td>
+<td>取输入开关量状态</td>
+</tr>
+<tr>
+<td>H03</td>
+<td>读保持存储器</td>
+<td>读一个或多个输出存储器值</td>
+</tr>
+<tr>
+<td>H04</td>
+<td>读存储器</td>
+<td>读一个或多个输入存储器值</td>
+</tr>
+<tr>
+<td>H05</td>
+<td>强置单线圈</td>
+<td>强置一个输出开关量状态</td>
+</tr>
+<tr>
+<td>H06</td>
+<td>写保持存储器</td>
+<td>把字写入一个输出</td>
+</tr>
+<tr>
+<td>H08</td>
+<td>回送诊断校验</td>
+<td>取输出开关量状态</td>
+</tr>
+<tr>
+<td>H0F</td>
+<td></td>
+<td>强置单线圈</td>
+</tr>
+<tr>
+<td>H10</td>
+<td>预置多存储器</td>
+<td>取输出开关量状态</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li>数据区：格式不可选，字址定义可选</li>
+<li>校验码：固定</li>
+<li>停止码：固定</li>
+</ul>
+</li>
+</ul>
+<h4 id="4大模式"><a href="#4大模式" class="headerlink" title="4大模式"></a>4大模式</h4><ul>
+<li><p>ASCII模式</p>
+<ul>
+<li>通信格式<ul>
+<li>起始位：1位</li>
+<li>数据长度：7位，低位先送</li>
+<li>校验位：1位（有检验），0位（无校验）</li>
+<li>停止位：1位（有检验），2位（无校验）</li>
+<li>波特率：可选</li>
+</ul>
+</li>
+<li>数据格式<ul>
+<li>校验方式：LRC算法<ul>
+<li>从地址码~数据区H进制数累加后求补码获得校验码</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>应用<ul>
+<li>通信格式<ul>
+<li>正常情况是先设置变频器然后根据设置的信息转义成格式字存储到PLC上，但是有些情况是PLC某些格式字固定了，就需要反向来处理，大部分情况PLC比变频器灵活</li>
+<li>PLC通信格式字设置</li>
+<li>变频器通信参数设置</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>RTU模式</p>
+<ul>
+<li>通信格式<ul>
+<li>起始位：1位</li>
+<li>数据长度：8位，低位先送</li>
+<li>校验位：1位（有检验），0位（无校验）</li>
+<li>停止位：1位（有检验），2位（无校验）</li>
+<li>波特率：可选</li>
+</ul>
+</li>
+<li>数据格式<ul>
+<li><img src="/imgs/RTU%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F.png" alt=""></li>
+<li>校验方式：CRC算法<ul>
+<li>二进制异或运算，相同位0，不同位1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据传送约定<ul>
+<li>帧信息连续发送，如果出现发送过程中1.5个字符的禁止时间则信息会出现错误</li>
+</ul>
+</li>
+<li>主站查询，从站应答<ul>
+<li><img src="/imgs/MODBUS%E5%8A%9F%E8%83%BD%E7%A0%81%E5%BA%94%E7%AD%94.png" alt=""></li>
+<li>错误应答协议：功能码的最高为置为1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>TCP</p>
+</li>
+<li><p>UDP</p>
+</li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -490,28 +687,34 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/07/xue-xi-pian/qu-kuai-lian-gai-nian/">
+                <a href="/2020/01/13/xue-xi-pian/netty/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="区块链概念">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="netty">
                         
-                        <span class="card-title">区块链概念</span>
+                        <span class="card-title">netty</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            比特币是一种数字或者叫电子货币去中心化的点对点（P2P）电子记账系统区块链由比特币衍生出来的一个概念举例
-ABCD相互交易
-A给B10个比特币，该交易记录A会广播出去让BCD都知道
-同理BCD的交易记录也会广播到所有用户
-这些交易记录会打包
+                            deploy-web-161.sh
+netty介绍
+异步
+事件驱动
+零拷贝
+
+netty组件
+bossGroup：接收连接线程组，netty管理
+workerGroup：I/O线程组，netty管理
+channelhandler
+入站处理器
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-07
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-13
                         </span>
                         <span class="publish-author">
                             
@@ -520,14 +723,6 @@ A给B10个比特币，该交易记录A会广播出去让BCD都知道
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/区块链/" target="_blank">
-                        <span class="chip bg-color">区块链</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -539,30 +734,36 @@ A给B10个比特币，该交易记录A会广播出去让BCD都知道
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/16/zhuan-ye-pian/nginx-xiao-ji/">
+                <a href="/2020/01/06/zhuan-ye-pian/maven/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="nginx小记">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="maven">
                         
-                        <span class="card-title">nginx小记</span>
+                        <span class="card-title">maven</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            配置nginx.conf#定义Nginx运行的用户和用户组
-user www www; 
+                            maven依赖管理2中方式
+import pom
+只能作用于dependencyMannagement
+pluginManagement不能继承，需要单独在项目父pom中声明
 
-#nginx进程数，通常设置成和cpu的数量相等
-worker_processes 4; 
 
-#全局错误日志定义类型，[debug | info |
+parent
+可以全部继承
+
+
+
+查看pom的依赖tree
+
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-16
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-06
                             </span>
                         <span class="publish-author">
                             
@@ -575,8 +776,8 @@ worker_processes 4;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/nginx/" target="_blank">
-                        <span class="chip bg-color">nginx</span>
+                    <a href="/tags/maven/" target="_blank">
+                        <span class="chip bg-color">maven</span>
                     </a>
                     
                 </div>
@@ -697,7 +898,7 @@ worker_processes 4;
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">11.5k</span>
+                <span class="white-color">27.6k</span>
             
 
             

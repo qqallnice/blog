@@ -1,0 +1,1139 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="netty, it, java, js">
+    <meta name="description" content="deploy-web-161.sh
+netty介绍
+异步
+事件驱动
+零拷贝
+
+netty组件
+bossGroup：接收连接线程组，netty管理
+workerGroup：I/O线程组，netty管理
+channelhandler
+入站处理器">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>netty | allnice</title>
+    <link rel="icon" type="image/png" href="/sitefavicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">allnice</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">allnice</div>
+        <div class="logo-desc">
+            
+            personal note
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/qqallnice/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/qqallnice/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        netty
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-01-13
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.1k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>deploy-web-161.sh</p>
+<h2 id="netty"><a href="#netty" class="headerlink" title="netty"></a>netty</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li>异步</li>
+<li>事件驱动</li>
+<li>零拷贝</li>
+</ul>
+<h4 id="netty组件"><a href="#netty组件" class="headerlink" title="netty组件"></a>netty组件</h4><ul>
+<li>bossGroup：接收连接线程组，netty管理</li>
+<li>workerGroup：I/O线程组，netty管理</li>
+<li>channelhandler<ul>
+<li>入站处理器：ChannelInboundHandler</li>
+<li>出站处理器：ChannelOutboundHandler</li>
+<li>编解码都是channelhandler</li>
+<li>codec：编解码<ul>
+<li>编码：本质上是出站处理器<ul>
+<li>将数据由原本的格式转换为字节流</li>
+<li>MessageToByteEncoder</li>
+</ul>
+</li>
+<li>解码：本质上是入站处理器<ul>
+<li>将字节流转换成原本格式或其他格式</li>
+<li>ByteToMessageDecoder/ReplayingDecoder</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ChannelInitializer<ul>
+<li>通道事件处理链初始化</li>
+<li>通过ChannelPipeline进行事件链的添加</li>
+</ul>
+</li>
+<li>ServerBootstrap<ul>
+<li>服务端配置类，简化服务启动需要初始化的内容</li>
+<li>channel():通道类型设置</li>
+<li>handle():通道事件链设置，对应于bossGroup管理</li>
+<li>childHandle():通道事件链设置，对应于workerGroup管理</li>
+<li>option():ChannelOption，通道可选项配置</li>
+</ul>
+</li>
+<li>Bootstrap<ul>
+<li>客户端配置类，参考服务端</li>
+</ul>
+</li>
+<li>bytebuf<ul>
+<li><img src="/imgs/bytebuf%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png" alt=""></li>
+<li>3种类型<ol>
+<li>heap buffer：堆上缓存区<ul>
+<li>优点：数据在jvm中，所以可以快速创建释放，并且提供了内部访问方法，数据被存放在byte array上</li>
+<li>缺点：每次信息交互，都需要拷贝到直接缓存区进行网络等交互</li>
+</ul>
+</li>
+<li>direct buffer：直接缓存区<ul>
+<li>优点：socket数据交互时，性能更优，</li>
+<li>缺点：由操作系统控制缓存的创建和释放，比堆上处理更复杂和耗时，不支持byte array方式来访问</li>
+<li>netty中通过使用内存池来优化缺点暴露的问题</li>
+</ul>
+</li>
+<li>composite buffer：复合缓存区<ul>
+<li>可以放入heap buffer和direct buffer混合，通过组件（Component）方式加入</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>类型选择：<ol>
+<li>对于后端业务消息编解码，建议使用heap buffer</li>
+<li>对于I/O通信线程在读写缓存区时，建议使用derect buffer</li>
+</ol>
+</li>
+<li>与jdk bytebuffer比较<ul>
+<li>jdk bytebuffer<ul>
+<li>缺点：final byte[]，jdk中声明后就不能动态伸缩；只有一个position指针标识位置信息，读写切换需要flip或者rewind来重置指针</li>
+</ul>
+</li>
+<li>bytebuf<ul>
+<li>优点：声明的数组是支持动态扩容的，默认最大容量Integer.MAX_VALUE，动态性体现在write方法中，不足则自动扩容；读写是完全独立的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>AtomicIntegerFieldUpdater：原子int更新器<ol>
+<li>更新器更新的类型必须是int，不能是其包装类型即Integer</li>
+<li>更新的类型必须是volatile，保证不被重排序和线程间的可见性</li>
+<li>变量不能是static，因为底层用的是Unsafe.objectFieldOffset()方法来更新（CAS本质上通过实例的偏移量直接复制）</li>
+<li>更新器只能修改可见范围内的变量</li>
+</ol>
+<ul>
+<li>netty中为何没有用AtomicInteger，netty中bytebuf用的数量特别大，如果每个bytebuf都内置一个AtomicInteger会造成一定的性能开销，通过统一的Updater可以全局设置一个，从而降低开销</li>
+</ul>
+</li>
+<li>TCP粘包和拆包<ul>
+<li>粘包：客户端发送的多次消息，服务端无法区分，导致多条消息可能按照不同组合方式粘在一起，反之亦然</li>
+<li>拆包：客户端发送的单次长消息，服务端可能拆分为多条，导致拆包异常，反之亦然</li>
+<li>通过codec来处理，如modbus协议的数据等</li>
+</ul>
+</li>
+<li>小结<ol>
+<li>一个EventLoopGroup包含一个或多个EventLoop</li>
+<li>一个EventLoop生命周期只会关联一个Thread</li>
+<li>所有由EventLoop处理的I/O事件都在关联的那个Thread进行</li>
+<li>一个channel的整个生命周期只会注册一个EventLoop</li>
+<li>一个EventLoop生命周期过程中，会被分配给一个或多个channel</li>
+<li>channel的实现是线程安全的，用来保证channel的任务按照顺序提交到EventLoop，并将消息顺序发出</li>
+<li>在开发中，不要将执行耗时的任务丢到EventLoop中执行，会影响netty的IO线程执行效率，可通过以下2种方式实现<ol>
+<li>在channelHandle回调方法中，将这些任务丢给业务线程池，实现业务的异步处理</li>
+<li>借助于netty提供的向channelpipeline的addLast方法传递EventExecutor<ul>
+<li>说明：默认情况下，channelpipeline中绑定的channelHandle都是有I/O线程组执行，但是调用了首个入参是EventExecutorGroup的方法，则channelHandle中的回调方法则有参数中的线程组异步执行</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>发送消息方式<ol>
+<li>通过channel-消息会经过channelpipeline的最后一个handle到第一个依次流转</li>
+<li>通过channelhandlecontext-从当前channelhandle的下一个handle流转，效率更高</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h3><h3 id="socket开发（RPC）"><a href="#socket开发（RPC）" class="headerlink" title="socket开发（RPC）"></a>socket开发（RPC）</h3><ul>
+<li>RPC<ul>
+<li>remote proceduce call：远程过程调用</li>
+</ul>
+<ol>
+<li>定义接口说明文件（idl）：描述对象（结构体）、对象成员、接口方法等一系列信息</li>
+<li>通过RPC框架所提供的编译器，将接口说明文件生成对应的语言文件</li>
+<li>客户端和服务端分别引入RPC编译生成的文件，即可以像调用本地方法一样调用远程方法，底层是基于socket通信</li>
+</ol>
+</li>
+<li>webservice<ul>
+<li>基于http，效率没有socket高</li>
+</ul>
+</li>
+<li>client<ul>
+<li>stub 桩</li>
+</ul>
+</li>
+<li>server<ul>
+<li>skeleton 骨架</li>
+</ul>
+</li>
+<li>序列化与反序列化：编码与解码</li>
+<li>rmi：只适用于java<ul>
+<li>remote method invocation</li>
+</ul>
+</li>
+</ul>
+<h4 id="apache的thift"><a href="#apache的thift" class="headerlink" title="apache的thift"></a>apache的thift</h4><ul>
+<li>IDL:interface definition languague</li>
+<li>安装编译工具<ul>
+<li><code>$ brew install thrift</code></li>
+</ul>
+</li>
+<li>generate code<ul>
+<li><code>$ thrift --gen &lt;language&gt; &lt;Thrift filename&gt;</code></li>
+</ul>
+</li>
+<li>通信三要素<ol>
+<li>协议<ul>
+<li>thrift</li>
+</ul>
+</li>
+<li>通信格式<ul>
+<li>TProtocol的实现，如：TBinaryProtocol-二进制格式，TCompactProtocol-压缩格式等</li>
+</ul>
+</li>
+<li>数据格式<ul>
+<li>自定义</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>thrift传输模式<ul>
+<li>TTransport的实现，如：TSocket-阻塞式等</li>
+</ul>
+</li>
+<li>thrift服务模型<ul>
+<li>基于对socket的封装</li>
+<li>TServer的实现，如：TNonblockingServer-非阻塞，多线程模型等</li>
+</ul>
+</li>
+</ul>
+<h4 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h4><ul>
+<li>google protobuf</li>
+<li><h2 id="安装编译工具"><a href="#安装编译工具" class="headerlink" title="安装编译工具"></a>安装编译工具</h2></li>
+</ul>
+<h3 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h3><ul>
+<li>全双工通信协议，长连接</li>
+</ul>
+<h3 id="io体系"><a href="#io体系" class="headerlink" title="io体系"></a>io体系</h3><h4 id="java-io"><a href="#java-io" class="headerlink" title="java.io"></a>java.io</h4><ul>
+<li>流<ul>
+<li>输入流：从外部到程序<ul>
+<li>字节：inputstream</li>
+<li>字符：read</li>
+</ul>
+</li>
+<li>输出流：从程序到外部<ul>
+<li>字节：outputstream</li>
+<li>字符：write</li>
+</ul>
+</li>
+<li>字节流：最底层的流实现</li>
+<li>字符流：基于字节流做的封装</li>
+<li>节点流<ul>
+<li>从特定的地方读写的流类，磁盘或者内存</li>
+</ul>
+</li>
+<li>过滤流<ul>
+<li>使用节点流作为输入输出，然后连接节点流</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="java-nio"><a href="#java-nio" class="headerlink" title="java.nio"></a>java.nio</h4><ul>
+<li>块/buffer<ul>
+<li>selector</li>
+<li>channel：类似于java.io中的stream</li>
+<li>buffer：基于数组的数据结构实现，所有读写都是通过buffer，不会通过channel<ul>
+<li>0 &lt;= mark &lt;= positon &lt;= limit &lt;= capacity </li>
+<li>mark：标记的元素索引</li>
+<li>position：待操作数组元素的定位</li>
+<li>limit：buffer数组可操作的长度</li>
+<li>capacity：常量，buffer数组申请的总长度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>零拷贝zero copy<ul>
+<li><img src="/imgs/nio%E9%9B%B6%E6%8B%B7%E8%B4%9D01.png" alt=""></li>
+<li><img src="/imgs/nio%E9%9B%B6%E6%8B%B7%E8%B4%9D02.png" alt=""></li>
+<li><img src="/imgs/nio%E9%9B%B6%E6%8B%B7%E8%B4%9D03.png" alt=""></li>
+<li><img src="/imgs/nio%E9%9B%B6%E6%8B%B7%E8%B4%9D04.png" alt=""></li>
+<li>DMA:direct memory access</li>
+</ul>
+</li>
+</ul>
+<h4 id="java编解码"><a href="#java编解码" class="headerlink" title="java编解码"></a>java编解码</h4><ul>
+<li>decode<ul>
+<li>将信息解码成char</li>
+</ul>
+</li>
+<li>encode<ul>
+<li>将char编码成byte</li>
+</ul>
+</li>
+<li>ASCII<ul>
+<li>American Standard Code For Information Interchange-美国信息交换标准代码</li>
+<li>7bit表示一个字符，可以表示128种字符</li>
+</ul>
+</li>
+<li>IOS-8859-1<ul>
+<li>8bit，一个byte，来表示一个字符，可以表示256种字符，包含128种ASCII所表示的字符</li>
+</ul>
+</li>
+<li>GB2312国标编码<ul>
+<li>2个字节表示一个汉字</li>
+</ul>
+</li>
+<li>GBK<ul>
+<li>包含GB2312</li>
+</ul>
+</li>
+<li>GB18030<ul>
+<li>包含GBK，最全的国标编码</li>
+</ul>
+</li>
+<li>big5<ul>
+<li>台湾繁体编码</li>
+</ul>
+</li>
+<li>unicode<ul>
+<li>包含全球所有国家的语言的编码</li>
+<li>采用2个字节（byte）表示一个字符</li>
+</ul>
+</li>
+<li>UTF<ul>
+<li>Unicode Translation Format</li>
+<li>是一种存储方式</li>
+<li>utf-8是unicode的实现之一，一般用1个字节表示英文，3个字节表示中文</li>
+</ul>
+</li>
+</ul>
+<h4 id="reactor模式"><a href="#reactor模式" class="headerlink" title="reactor模式"></a>reactor模式</h4><ul>
+<li>scalable IO in java</li>
+<li>与传统模式比较<ul>
+<li>传统模式<ul>
+<li>缺点<ol>
+<li>一个socket一个线程</li>
+<li>多线程的上下文切换性能开销</li>
+<li>socket建立之后不会实时交互信息，导致空置线程</li>
+</ol>
+</li>
+<li>优点<ol>
+<li>易于编程</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>reactor模式<ul>
+<li><img src="/imgs/reactor%E6%A8%A1%E5%9E%8B01.png" alt=""></li>
+<li>角色构成<ol>
+<li>Handle（句柄或描述符）：表示的是一种资源，是由操作系统来提供的，表示一个个事件，事件产生的发源地。</li>
+<li>Synchronous Event Demultiplexer（同步事件分离器）：用于等待事件发生，调用方在调用的时候被阻塞，一直等待有事件发生为止，对于linux来说，它指的是常用的I/O复用机制，如：select，poll，epoll等。同java nio中的selector。</li>
+<li>Event Handle（事件处理器）：本身由多个回调方法组成，这些回调方法构成了事件触发的反馈机制。</li>
+<li>Concrete Event Handle（具体事件处理器）：是事件处理的实现，由开发自定义。</li>
+<li>Initiation Dispatcher（初始分发器）：实际上就是reactor角色，本身定义了一些规范，用于控制事件的调度方式，同时提供了应用进行事件处理器的注册、删除等操作。</li>
+</ol>
+</li>
+<li>acceptor:用于主reactor到从reactor转移注册信息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/01/28/xue-xi-pian/duo-xian-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="多线程">
+                        
+                        <span class="card-title">多线程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            多进程vs多线程
+创建进程开销大于线程
+进程间通信比线程慢
+多进程比多线程稳定
+
+java线程
+Thread.setPriority:设置优先级，默认5，1~10
+Thread.join()，等待Thread线程结束运行后当前进程继续运行
+
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            yw
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/thread/" target="_blank">
+                        <span class="chip bg-color">thread</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/01/08/xue-xi-pian/dian-zi-tong-xin/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="PLC">
+                        
+                        <span class="card-title">PLC</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            通信基础基础知识
+基带和频带
+通信协议3要素通信接口标准
+RS232
+RS422
+RS485
+
+通信格式
+对一个字符的通信格式定义
+波特率
+奇偶校验位
+起始位
+数据位
+停止位个数
+7E1
+数据区7个，E：偶校验，停止位1个
+
+
+8E2
+
+数
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            yw
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/plc/" target="_blank">
+                        <span class="chip bg-color">plc</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://qqallnice.github.io/blog" target="_blank">qqallnice</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/qqallnice/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">27.6k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/qqallnice" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yaweng628@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1016132490@qq.com" class="tooltipped" data-tooltip="QQ联系我: 1016132490@qq.com" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

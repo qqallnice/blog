@@ -5,10 +5,12 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="ocp系统, it, java, js">
-    <meta name="description" content="lombok简化实体类的编码，编译后自动生成set、get器等重复性代码，开发时可忽略
-Oahth开放身份认证授权标准spring security安全验证框架，对oauth标准的实现
-kaptchagoogle图形验证码 
-springc">
+    <meta name="description" content="lombok
+简化实体类的编码，编译后自动生成set、get器等重复性代码，开发时可忽略
+@Data
+@Builder
+@Setter
+@GetterOahth开放身份认证授权标准spring security安全验证框架，对oauth标准">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -415,7 +417,7 @@ springc">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        172
+                        336
                     </div>
                     
 
@@ -438,15 +440,44 @@ springc">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h2><p>简化实体类的编码，编译后自动生成set、get器等重复性代码，开发时可忽略</p>
-<h2 id="Oahth"><a href="#Oahth" class="headerlink" title="Oahth"></a>Oahth</h2><p>开放身份认证授权标准<br>spring security安全验证框架，对oauth标准的实现</p>
-<h2 id="kaptcha"><a href="#kaptcha" class="headerlink" title="kaptcha"></a>kaptcha</h2><p>google图形验证码 </p>
-<h2 id="springcloud"><a href="#springcloud" class="headerlink" title="springcloud"></a>springcloud</h2><p>将xml配置进行java对象化</p>
-<h2 id="验证码功能"><a href="#验证码功能" class="headerlink" title="验证码功能"></a>验证码功能</h2><ul>
-<li>页面通过url请求服务器生成验证码，同时通过redis进行持久化<h2 id="swagger"><a href="#swagger" class="headerlink" title="swagger"></a>swagger</h2>restful API接口框架</li>
-<li>自动生成接口文档</li>
-<li>接口测试<h2 id="xxl-job"><a href="#xxl-job" class="headerlink" title="xxl-job"></a>xxl-job</h2></li>
+                <h2 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h2><ul>
+<li>简化实体类的编码，编译后自动生成set、get器等重复性代码，开发时可忽略</li>
+<li>@Data</li>
+<li>@Builder</li>
+<li>@Setter</li>
+<li>@Getter<h2 id="Oahth"><a href="#Oahth" class="headerlink" title="Oahth"></a>Oahth</h2>开放身份认证授权标准<br>spring security安全验证框架，对oauth标准的实现<h2 id="kaptcha"><a href="#kaptcha" class="headerlink" title="kaptcha"></a>kaptcha</h2>google图形验证码 <h2 id="springcloud"><a href="#springcloud" class="headerlink" title="springcloud"></a>springcloud</h2>将xml配置进行java对象化</li>
 </ul>
+<h2 id="验证码功能"><a href="#验证码功能" class="headerlink" title="验证码功能"></a>验证码功能</h2><ul>
+<li>页面通过url请求服务器生成验证码，同时通过redis进行持久化<h2 id="swagger"><a href="#swagger" class="headerlink" title="swagger"></a>swagger</h2></li>
+<li>默认访问地址：<a href="http://localhost:8080/pay/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/pay/swagger-ui.html</a></li>
+<li>restful API接口框架<ul>
+<li>自动生成接口文档</li>
+<li>接口测试</li>
+</ul>
+</li>
+<li>集成springboot<ol>
+<li>进行swagger静态资源映射，不然会直接走sevlet对应的controller</li>
+<li>进行swagger的配置，设置需要生成api文档的restful请求</li>
+<li>需要在需要swagger管理的controller中配置注解</li>
+</ol>
+<ul>
+<li>@ApiOperation:用在方法上，说明方法的作用</li>
+<li>@ApiImplicitParams:用在方法上包含一组参数说明</li>
+<li>@ApiImplicitParam:用在@ApiImplicitParams中，指定一个请求参数的说明<ul>
+<li>paramType<ul>
+<li>header -&gt; @RequestHeader,请求头</li>
+<li>query -&gt; @RequestParam,get请求参数url?a=1&amp;b=2</li>
+<li>path -&gt; @PathVariable,restful接口即controller中/path/{param}</li>
+<li>body -&gt; @RequestBody,json参数</li>
+<li>form -&gt; 表单提交,页面submit提交参数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="xxl-job"><a href="#xxl-job" class="headerlink" title="xxl-job"></a>xxl-job</h2><h2 id="ocp部署"><a href="#ocp部署" class="headerlink" title="ocp部署"></a>ocp部署</h2><p>- </p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -588,6 +619,14 @@ authorized_keys
                     </div>
                 </div>
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ssh/" target="_blank">
+                        <span class="chip bg-color">ssh</span>
+                    </a>
+                    
+                </div>
+                
             </div>
         </div>
         
@@ -704,7 +743,7 @@ authorized_keys
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">11.5k</span>
+                <span class="white-color">27.6k</span>
             
 
             
