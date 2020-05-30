@@ -1,0 +1,1044 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="k8s, it, java, js">
+    <meta name="description" content="Iaas
+infrastructure as a service
+基础设施即服务
+对应计算机的物理机
+比较流行的产品有openstack、VM等
+
+Paas
+platform as a servie
+平台即服务
+现今业界公认的标准产品是Do">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>k8s | allnice</title>
+    <link rel="icon" type="image/png" href="/sitefavicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">allnice</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">allnice</div>
+        <div class="logo-desc">
+            
+            personal note
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/qqallnice/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/qqallnice/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        k8s
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/k8s/" target="_blank">
+                                <span class="chip bg-color">k8s</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-03-30
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        5 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Iaas"><a href="#Iaas" class="headerlink" title="Iaas"></a>Iaas</h2><ul>
+<li>infrastructure as a service</li>
+<li>基础设施即服务</li>
+<li>对应计算机的物理机</li>
+<li>比较流行的产品有openstack、VM等</li>
+</ul>
+<h2 id="Paas"><a href="#Paas" class="headerlink" title="Paas"></a>Paas</h2><ul>
+<li>platform as a servie</li>
+<li>平台即服务</li>
+<li>现今业界公认的标准产品是Docker</li>
+<li>针对于Iaas进行上一层的封装</li>
+</ul>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><ul>
+<li><p>将环境容器化</p>
+<ul>
+<li>带来的问题是容器与外界访问被容器本身封装了一层，需要增加容器端口和物理机端口的资源映射完成和外界通信，效率变低</li>
+</ul>
+</li>
+<li><p>安装</p>
+<ol>
+<li>SET UP THE REPOSITORY<ul>
+<li>yum install -y yum-utils device-mapper-persistent-data lvm2</li>
+</ul>
+</li>
+<li>替换yum的docker源<ul>
+<li>wget <a href="https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo" target="_blank" rel="noopener">https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a> -O /etc/yum.repos.d/docker-ce.repo</li>
+</ul>
+</li>
+<li>INSTALL DOCKER ENGINE - COMMUNITY<ul>
+<li>yum install docker-ce docker-ce-cli containerd.io</li>
+</ul>
+</li>
+<li>镜像加速器<ul>
+<li><a href="https://cr.console.aliyun.com/" target="_blank" rel="noopener">https://cr.console.aliyun.com/</a><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> -p /etc/docker
+<span class="token function">sudo</span> <span class="token function">tee</span> /etc/docker/daemon.json <span class="token operator">&lt;&lt;</span>-<span class="token string">'EOF'</span>
+<span class="token punctuation">{</span>
+<span class="token string">"registry-mirrors"</span><span class="token keyword">:</span> <span class="token punctuation">[</span><span class="token string">"https://7som5skl.mirror.aliyuncs.com"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+EOF
+<span class="token function">sudo</span> systemctl daemon-reload
+<span class="token function">sudo</span> systemctl restart docker</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>搭建本地私服</p>
+<ul>
+<li><p>docker run -d -p 5000:5000 –restart always –name registry registry:2</p>
+<ol>
+<li>docker pull registry</li>
+<li>docker run -d -p 5000:5000 –restart always –name registry</li>
+<li>docker tag ubuntu localhost:5000/ubuntu:v1</li>
+<li>docker push localhost:5000/ubuntu:v1</li>
+<li>docker pull localhost:5000/ubuntu:v1</li>
+</ol>
+</li>
+<li><p>设置私服访问权限</p>
+<pre class=" language-bash"><code class="language-bash">  <span class="token comment" spellcheck="true">## 创建目录</span>
+  <span class="token function">mkdir</span> -p /data/DockerRegistry/<span class="token punctuation">{</span>Data,Cert,Auth<span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">## 生成TLS使用的自签名证书</span>
+  <span class="token function">cd</span> /data/DockerRegistry/Cert
+
+  domain<span class="token operator">=</span>MyDockerRegistry.com
+  openssl req -nodes \
+  -subj <span class="token string">"/C=CN/ST=Hubei/L=Wuhan/CN=<span class="token variable">$domain</span>"</span> \
+  -newkey rsa:4096 -keyout <span class="token variable">$domain</span>.key -out <span class="token variable">$domain</span>.csr
+  openssl x509 -req -days 3650 -in <span class="token variable">$domain</span>.csr -signkey <span class="token variable">$domain</span>.key -out <span class="token variable">$domain</span>.crt
+
+  <span class="token comment" spellcheck="true">## 生成鉴权使用的密码文件</span>
+  docker run --name once --entrypoint<span class="token operator">=</span>htpasswd registry:2 -Bbn docker docker666 <span class="token operator">></span> /data/DockerRegistry/Auth/Htpasswd
+  docker <span class="token function">rm</span> once
+
+  <span class="token comment" spellcheck="true">## 运行容器</span>
+  docker run -d \
+  -p 5000:5000 \
+  --restart<span class="token operator">=</span>always \
+  --name registry \
+  -v /data/DockerRegistry/Data:/var/lib/registry \
+  -v /data/DockerRegistry/Cert:/Cert \
+  -v /data/DockerRegistry/Auth:/Auth \
+  -e <span class="token string">"REGISTRY_AUTH=htpasswd"</span> \
+  -e <span class="token string">"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"</span> \
+  -e REGISTRY_AUTH_HTPASSWD_PATH<span class="token operator">=</span>/Auth/Htpasswd \
+  -v <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">pwd</span><span class="token variable">)</span></span>"</span>/certs:/certs \
+  -e REGISTRY_HTTP_TLS_CERTIFICATE<span class="token operator">=</span>/Cert/MyDockerRegistry.com.crt \
+  -e REGISTRY_HTTP_TLS_KEY<span class="token operator">=</span>/Cert/MyDockerRegistry.com.key \
+  registry:2
+
+  <span class="token comment" spellcheck="true">## 配置域名</span>
+  <span class="token keyword">echo</span> <span class="token string">"127.0.0.1 MyDockerRegistry.com"</span> <span class="token operator">>></span> /etc/hosts
+  <span class="token comment" spellcheck="true">## 查看docker registry中的镜像</span>
+  curl https://MyDockerRegistry.com:5000/v2/_catalog -u docker:docker666 --cacert /data/DockerRegistry/Cert/MyDockerRegistry.com.crt</code></pre>
+</li>
+</ul>
+</li>
+<li><p>发布镜像到阿里私服</p>
+<ul>
+<li><p>docker login –username=99allnice registry.cn-chengdu.aliyuncs.com</p>
+</li>
+<li><p>docker tag [ImageId] registry.cn-chengdu.aliyuncs.com/allnice/99:[镜像版本号]</p>
+</li>
+<li><p>docker push registry.cn-chengdu.aliyuncs.com/allnice/99:[镜像版本号]</p>
+<p>docker exec -it registry  /bin/registry garbage-collect  /etc/docker/registry/config.yml</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="k8s"><a href="#k8s" class="headerlink" title="k8s"></a>k8s</h3><ul>
+<li>分布式资源管理框架</li>
+<li>优点<ul>
+<li>开源</li>
+<li>弹性伸缩</li>
+<li>轻量级</li>
+<li>负载均衡：ipvs策略</li>
+</ul>
+</li>
+<li>前身<ul>
+<li>google borg框架的go语言版本</li>
+</ul>
+</li>
+<li>组件<ul>
+<li>master<ul>
+<li>kubectl：命令终端</li>
+<li>web UI：页面控制台</li>
+<li>scheduler：调度中心，选择合适的node完成任务分配</li>
+<li>controller：控制中心，维护副本期望数目<ul>
+<li>replication controller</li>
+<li>replicaSet controller<ul>
+<li>支持HPA（horizontal pod autoscale），通过配置条件自动扩缩容</li>
+</ul>
+</li>
+<li>deployment controller<ul>
+<li>支持HPA</li>
+</ul>
+</li>
+<li>高可用集群副本数目最好是大于1的奇数，原因同zookeeper选举机制，大于半数策略</li>
+<li>新版本中增加了replicaSet，该控制器支持组合式操作pod，比如通过pod的别名+pod版本来操作pod，RC不支持组合式</li>
+<li>滚动更新则需要使用deployment控制器，原理是它会生成RS来创建pod，如果需要更新pod版本，则会创建新的RS_NEW来创建新的pod，同时废弃旧版本的pod</li>
+<li>statefullSet<ul>
+<li>解决有状态服务问题</li>
+<li>稳定的持久化存储<ul>
+<li>pod重新调度后能访问相同的持久化数据，基于PVC实现</li>
+</ul>
+</li>
+<li>稳定的网络标志<ul>
+<li>pod重新调度后能保持原有的podname和hostname等，基于Headless Service</li>
+</ul>
+</li>
+<li>有序部署</li>
+<li>有序收缩</li>
+</ul>
+</li>
+<li>daemonSet<ul>
+<li>确保全部或部分node上运行一个pod副本</li>
+<li>当有node加入则自动创建pod，node移除会自动销毁pod</li>
+<li>daemonset被删除时，会自动删除它所创建的所有pod</li>
+</ul>
+</li>
+<li>job，cronjob</li>
+</ul>
+</li>
+<li>api server：服务中心，所有服务访问的统一入口</li>
+<li>etcd：k-v分布式存储服务</li>
+</ul>
+</li>
+<li>node<ul>
+<li>kubelet：与cri（container runtime interface）交互，维持pod的生命周期</li>
+<li>kube proxy：写入规则到iptables、ipvs，负责pod的负载均衡，主要是与防火墙交互进行映射处理<ul>
+<li>firewall</li>
+</ul>
+</li>
+<li>pod<ul>
+<li>container：主流的docker</li>
+<li>自主式pod</li>
+<li>被控制管理的pod</li>
+<li>同一个pod中的各个容器交互<ul>
+<li>io</li>
+<li>公用pause网络栈，通过localhost就可以相互访问</li>
+</ul>
+</li>
+<li>pod和pod的交互<ul>
+<li>overlay network<ul>
+<li>flannel开源产品实现</li>
+</ul>
+</li>
+<li>1:1或N:1<ul>
+<li>k8s自身就支持</li>
+</ul>
+</li>
+<li>1:N或N:N<ul>
+<li>可以通过SVC（service）桥接来实现</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>pod与svc交互<ul>
+<li>iptables或ipvs</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>插件<ul>
+<li>coreDNS：可以为集群中的svc创建域名ip关系解析</li>
+<li>dashboard：为k8s提供一个B/S的访问模式</li>
+<li>ingress controller：官方只能提供4层代理，它可以提供7层</li>
+<li>fedetation：提供一个可以跨集群中心多k8s统一管理功能</li>
+<li>prometheus：提供k8s监控能力</li>
+<li>ELK：提供k8s日志统一分析接入平台</li>
+</ul>
+</li>
+</ul>
+<h2 id="Saas"><a href="#Saas" class="headerlink" title="Saas"></a>Saas</h2><ul>
+<li>software as a service</li>
+<li>软件即服务</li>
+<li></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/03/30/xue-xi-pian/kubernetes/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="k8s">
+                        
+                        <span class="card-title">k8s</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Iaas
+infrastructure as a service
+基础设施即服务
+对应计算机的物理机
+比较流行的产品有openstack、VM等
+
+Paas
+platform as a servie
+平台即服务
+现今业界公认的标准产品是Do
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            yw
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/k8s/" target="_blank">
+                        <span class="chip bg-color">k8s</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/21/xue-xi-pian/yun-fu-wu-qi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="云服务器">
+                        
+                        <span class="card-title">云服务器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            云服务器厂商
+阿里云
+腾讯云
+UCloud
+GCP，谷歌云
+
+云机器相关
+ECS
+elastic compute service
+简单高效，处理能力可伸缩计算服务
+与传统服务器IDC区别
+
+
+
+
+VPS
+Virtual Private Se
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            yw
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ECS/" target="_blank">
+                        <span class="chip bg-color">ECS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://qqallnice.github.io/blog" target="_blank">qqallnice</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/qqallnice/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">30.1k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/qqallnice" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yaweng628@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1016132490@qq.com" class="tooltipped" data-tooltip="QQ联系我: 1016132490@qq.com" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

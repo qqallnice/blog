@@ -6,11 +6,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="ssh原理, it, java, js">
     <meta name="description" content="搭建免密访问通过rsa非对称算法生成相关信息
-ssh-keygen -t rsa -P ‘’
-会自动在~目录下生成.ssh文件夹，包含下列文件信息
+ssh-keygen -t rsa -P ‘’      - 会自动在~目录下生成.ssh文件夹，包含下列文件信息
 authorized_keys
-存放远程免密登录的公钥,主要通过这个文件记录多台机器的公钥
-">
+存放远程免密登录的公钥,主要通过这个文件记录多">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -441,29 +439,40 @@ authorized_keys
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="搭建免密访问"><a href="#搭建免密访问" class="headerlink" title="搭建免密访问"></a>搭建免密访问</h2><h3 id="通过rsa非对称算法生成相关信息"><a href="#通过rsa非对称算法生成相关信息" class="headerlink" title="通过rsa非对称算法生成相关信息"></a>通过rsa非对称算法生成相关信息</h3><ul>
-<li>ssh-keygen -t rsa -P ‘’</li>
-<li>会自动在~目录下生成.ssh文件夹，包含下列文件信息</li>
-<li>authorized_keys</li>
+<li>ssh-keygen -t rsa -P ‘’<pre><code>      - 会自动在~目录下生成.ssh文件夹，包含下列文件信息</code></pre></li>
+<li>authorized_keys<ul>
 <li>存放远程免密登录的公钥,主要通过这个文件记录多台机器的公钥</li>
-<li>id_rsa</li>
+</ul>
+</li>
+<li>id_rsa<ul>
 <li>生成的私钥文件</li>
-<li>id_rsa.pub</li>
+</ul>
+</li>
+<li>id_rsa.pub<ul>
 <li>生成的公钥文件</li>
-<li>know_hosts</li>
+</ul>
+</li>
+<li>know_hosts<ul>
 <li>已知的主机公钥清单<h3 id="如果希望ssh公钥生效需满足至少下面两个条件："><a href="#如果希望ssh公钥生效需满足至少下面两个条件：" class="headerlink" title="如果希望ssh公钥生效需满足至少下面两个条件："></a>如果希望ssh公钥生效需满足至少下面两个条件：</h3></li>
+</ul>
+</li>
 <li>.ssh目录的权限必须是700</li>
 <li>.ssh/authorized_keys文件权限必须是600<h3 id="实现双向免登陆"><a href="#实现双向免登陆" class="headerlink" title="实现双向免登陆"></a>实现双向免登陆</h3></li>
-<li>A免登陆B</li>
+<li>A免登陆B<ul>
 <li>将A机器上生成的pub文件拷贝到B服务器</li>
 <li>然后将pub文件转成authorized_keys认证文件</li>
 <li>将pub文件信息追加到authorized_keys中</li>
 <li>cat pub &gt;&gt; authorized_keys</li>
-<li>B免登录A</li>
+</ul>
+</li>
+<li>B免登录A<ul>
 <li>将B机器上生成的pub文件拷贝到A服务器</li>
 <li>然后将pub文件转成authorized_keys认证文件</li>
 <li>know_hosts</li>
 <li>如果B事先增加了A的pub公钥信息，则A机器首次免密码登录B时不会有提示是否连接</li>
 <li>反之亦反</li>
+</ul>
+</li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -730,7 +739,7 @@ A给B10个比特币，该交易记录A会广播出去让BCD都知道
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">27.6k</span>
+                <span class="white-color">30.1k</span>
             
 
             

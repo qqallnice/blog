@@ -420,7 +420,7 @@ Thread.join()，等待Thread线程结束运行后当前进程继续运行
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        596
+                        727
                     </div>
                     
 
@@ -478,40 +478,53 @@ Thread.join()，等待Thread线程结束运行后当前进程继续运行
 </li>
 </ol>
 <ul>
-<li>死锁<ul>
+<li><p>死锁</p>
+<ul>
 <li>各自拥有不同的锁，且都等待对方释放锁</li>
 <li>避免死锁：各自任务持有不同锁的顺序必须一致</li>
 </ul>
 </li>
-<li>reentranklock替换synchronize进行开启释放锁</li>
-<li>reentrankreadwriteloca<ul>
-<li>读写锁分离，可以提高读效率，适用于多读少些场景</li>
+<li><p>reentranklock替换synchronize进行开启释放锁</p>
+</li>
+<li><p>reentrankreadwriteloca</p>
+<ul>
+<li>读写锁分离，可以提高读效率，适用于多读少写场景</li>
 </ul>
 </li>
-<li>condition.awiat/signal/signalall === wait/notify/notifyall</li>
-<li>concurrent集合<br><img src="/imgs/threadsafelist.png" alt=""></li>
-<li>Atomic<ul>
-<li>CAS(compare and set)</li>
+<li><p>condition.awiat/signal/signalall === wait/notify/notifyall</p>
+</li>
+<li><p>concurrent集合<br><img src="/imgs/threadsafelist.png" alt=""></p>
+</li>
+<li><p>Atomic</p>
+<ul>
+<li>CAS(compare and set)<ul>
+<li>会存在ABA问题，可以通过乐观锁来规避，正常情况不需要考虑</li>
+</ul>
+</li>
 <li>实现无锁的线程安全</li>
 <li>适用于累加器，计数器</li>
 </ul>
 </li>
-<li>ExcuteService<ul>
+<li><p>ExcuteService</p>
+<ul>
 <li>线程池</li>
 </ul>
 </li>
-<li>ScheduledExcuteService<ul>
+<li><p>ScheduledExcuteService</p>
+<ul>
 <li>FixRate，周期执行，不管执行的任务是否完成，会周期性开启线程执行任务</li>
 <li>FixDelay，任务执行完后间隔周期性时间执行下一个</li>
 </ul>
 </li>
-<li>Callable等同Runnable<ul>
+<li><p>Callable等同Runnable</p>
+<ul>
 <li>callable：需要返回结果</li>
 <li>Runnable：不需要返回结果</li>
 <li>配合Future来使用</li>
 </ul>
 </li>
-<li>CompletableFuture<ol>
+<li><p>CompletableFuture</p>
+<ol>
 <li>异步任务结束时，会自动调用某个对象方法</li>
 <li>异步任务出错时，会自动调用某个对象方法</li>
 <li>主线程设置好回调后，不用关心异步任务的执行</li>
@@ -523,8 +536,17 @@ Thread.join()，等待Thread线程结束运行后当前进程继续运行
 <li>anyOf/allOf:并行处理多个CompletableFuture</li>
 </ul>
 </li>
-<li>ThreadLocal<ul>
-<li>线程内传递状态</li>
+<li><p>ThreadLocal</p>
+<ul>
+<li>线程内传递状态<ul>
+<li>空间换时间，会按照线程维度生成各自的变量</li>
+</ul>
+</li>
+<li>jdk8之后的实现方式是线程绑定threadlocalmap<ul>
+<li>threadlocalmap&lt;ThreadLocal&lt;?&gt; extends WeakReference, value&gt;中的key是弱引用类型</li>
+<li>目的是为了当threadlocal使用结束后会gc会回收只有弱引用的对象，让key为null，当下次用到threadlocalmap中的接口时jvm会判断key为null的entry对应的将value置为null，来防止内存泄漏</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -583,38 +605,35 @@ Thread.join()，等待Thread线程结束运行后当前进程继续运行
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/01/28/xue-xi-pian/duo-xian-cheng/">
+                <a href="/2020/02/17/zhuan-ye-pian/pdman/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="多线程">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="pdman">
                         
-                        <span class="card-title">多线程</span>
+                        <span class="card-title">pdman</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            多进程vs多线程
-创建进程开销大于线程
-进程间通信比线程慢
-多进程比多线程稳定
+                            启动
+cnpm run start
 
-java线程
-Thread.setPriority:设置优先级，默认5，1~10
-Thread.join()，等待Thread线程结束运行后当前进程继续运行
 
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.da
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-17
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -623,12 +642,11 @@ Thread.join()，等待Thread线程结束运行后当前进程继续运行
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/thread/" target="_blank">
-                        <span class="chip bg-color">thread</span>
+                    <a href="/tags/db/" target="_blank">
+                        <span class="chip bg-color">db</span>
                     </a>
                     
                 </div>
@@ -678,6 +696,14 @@ channelhandler
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/netty/" target="_blank">
+                        <span class="chip bg-color">netty</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -796,7 +822,7 @@ channelhandler
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">27.6k</span>
+                <span class="white-color">30.1k</span>
             
 
             

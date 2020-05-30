@@ -12,8 +12,7 @@ git config
 配置git全局信息
 $ git config --global user.name &#39;name&#39;
 $ git config --global user.email &#39;email&#39;
-
-">
+$">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -420,7 +419,7 @@ $ git config --global user.email &#39;email&#39;
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        315
+                        388
                     </div>
                     
 
@@ -450,6 +449,10 @@ $ git config --global user.email &#39;email&#39;
 <li>配置git全局信息<ul>
 <li><code>$ git config --global user.name 'name'</code></li>
 <li><code>$ git config --global user.email 'email'</code></li>
+<li><code>$ git config --global core.quotepath false</code><ul>
+<li>处理中文乱码问题</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -527,8 +530,30 @@ $ git config --global user.email &#39;email&#39;
 <h2 id="git-merge"><a href="#git-merge" class="headerlink" title="git merge"></a>git merge</h2><ul>
 <li>合并test分支内容到主干<ul>
 <li><code>$ git merge test</code></li>
+<li><code>$ git merge --abort</code><ul>
+<li>终止合并</li>
 </ul>
 </li>
+<li><code>$ git reset --merge</code><ul>
+<li>重新合并</li>
+</ul>
+</li>
+<li><code>$ git pull</code><ul>
+<li>重新拉取</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="git-fetch"><a href="#git-fetch" class="headerlink" title="git fetch"></a>git fetch</h2><ul>
+<li>只是从远程获取最新版本到本地,不会merge(合并)</li>
+</ul>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><ul>
+<li>git checkout -b hello<ul>
+<li>创建hello分支并切换到该分支</li>
+</ul>
+</li>
+<li></li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -803,7 +828,7 @@ l
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">27.6k</span>
+                <span class="white-color">30.1k</span>
             
 
             

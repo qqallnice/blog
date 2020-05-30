@@ -8,15 +8,16 @@
     <meta name="description" content="jdk、jre和jvm
 jvm
 classic VM：第一款商用
+
 hotspot VM：热门VM
 
+
+
 将引用分为4种
+
 Strong：通过new出来的对象
-Soft：继承Reference
-内存不足时一定会被GC，长期不用也会被GC
-
-
-Wea">
+Soft：继承SoftReference
+内存不足时一定会被GC，长期不用也会被">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -423,7 +424,7 @@ Wea">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        7k
+                        7.1k
                     </div>
                     
 
@@ -448,28 +449,68 @@ Wea">
             <div id="articleContent">
                 <h2 id="jdk、jre和jvm"><a href="#jdk、jre和jvm" class="headerlink" title="jdk、jre和jvm"></a>jdk、jre和jvm</h2><p><img src="/imgs/jdk.png" alt=""></p>
 <h2 id="jvm"><a href="#jvm" class="headerlink" title="jvm"></a>jvm</h2><ul>
-<li>classic VM：第一款商用</li>
-<li>hotspot VM：热门VM<ul>
-<li><img src="/imgs/hotspotcomponent.png" alt=""></li>
-<li>将引用分为4种<ol>
+<li><p>classic VM：第一款商用</p>
+</li>
+<li><p>hotspot VM：热门VM</p>
+<ul>
+<li><p><img src="/imgs/hotspotcomponent.png" alt=""></p>
+</li>
+<li><p>将引用分为4种</p>
+<ol>
 <li>Strong：通过new出来的对象</li>
-<li>Soft：继承Reference<ul>
+<li>Soft：继承SoftReference<ul>
 <li>内存不足时一定会被GC，长期不用也会被GC</li>
 </ul>
 </li>
-<li>Weak：继承Reference<ul>
+<li>Weak：继承WeakReference<ul>
 <li>一定会被GC，当被mark为dead，会在ReferenceQueue中通知</li>
 </ul>
 </li>
-<li>Phantom：继承Reference<ul>
+<li>Phantom：继承PhantomReference<ul>
 <li>本来就没引用，当从jvm heap释放会通知</li>
 </ul>
 </li>
 </ol>
 </li>
+<li><table>
+<thead>
+<tr>
+<th>引用类型</th>
+<th>被垃圾回收时间</th>
+<th>用途</th>
+<th>生存时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>强引用</td>
+<td>从来不会</td>
+<td>对象的一般状态</td>
+<td>JVM停止运行时终止</td>
+</tr>
+<tr>
+<td>软引用</td>
+<td>当内存不足时</td>
+<td>对象缓存</td>
+<td>内存不足时终止</td>
+</tr>
+<tr>
+<td>弱引用</td>
+<td>正常垃圾回收时</td>
+<td>对象缓存</td>
+<td>垃圾回收后终止</td>
+</tr>
+<tr>
+<td>虚引用</td>
+<td>正常垃圾回收时</td>
+<td>跟踪对象的垃圾回收</td>
+<td>垃圾回收后终止</td>
+</tr>
+</tbody></table>
+</li>
 </ul>
 </li>
-<li>JVM参数选项<ul>
+<li><p>JVM参数选项</p>
+<ul>
 <li>-XX:+&lt; option &gt;<ul>
 <li>代表开启option选项</li>
 </ul>
@@ -488,7 +529,8 @@ Wea">
 </li>
 </ul>
 </li>
-<li>jvm中gc相关选项<ul>
+<li><p>jvm中gc相关选项</p>
+<ul>
 <li>-verbose:gc<ul>
 <li>冗余gc信息输出</li>
 </ul>
@@ -547,18 +589,21 @@ Wea">
 </li>
 </ul>
 </li>
-<li>包含解释执行和编译执行混合模式<ul>
+<li><p>包含解释执行和编译执行混合模式</p>
+<ul>
 <li>解释执行：解释器不断读取字节码，碰到对应指令就解释执行</li>
 <li>编译执行：通过JIT（just in time）即时编译器来讲字节码（热点代码）编译成本地机器码</li>
 </ul>
 </li>
-<li>基于栈的指令集<ul>
+<li><p>基于栈的指令集</p>
+<ul>
 <li>jvm是基于此，部分热点指令操作会做相关寄存器指令映射，从而提升指令操作效率</li>
 <li>移植性好</li>
 <li>基于内存操作，可能多个指令才能实现寄存器的一个指令操作</li>
 </ul>
 </li>
-<li>基于寄存器的指令集<ul>
+<li><p>基于寄存器的指令集</p>
+<ul>
 <li>速度更快，基于cpu高速缓存操作</li>
 <li>更贴近硬件指令，指令更底层效率更高</li>
 </ul>
@@ -1230,7 +1275,7 @@ Wea">
 </ul>
 </li>
 <li>jstat<ul>
-<li>查看元空间信息：jstat -gc lvmid</li>
+<li>查看元空间信息：jstat -gc jvmid</li>
 </ul>
 </li>
 <li>jcmd<ul>
@@ -1528,7 +1573,7 @@ Wea">
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">27.6k</span>
+                <span class="white-color">30.1k</span>
             
 
             

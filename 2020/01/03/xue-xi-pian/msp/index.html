@@ -443,14 +443,14 @@ mysql
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        736
+                        875
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        4 分
                     </div>
                     
                 
@@ -524,6 +524,10 @@ systemctl start mysqld.service
 <span class="token function">grep</span> <span class="token string">'temporary password'</span> /var/log/mysqld.log
 <span class="token comment" spellcheck="true">## 登录并修改默认密码</span>
 mysql –u root –p
+<span class="token comment" spellcheck="true">## 获取用户host信息进行密码修改</span>
+use mysql<span class="token punctuation">;</span>
+<span class="token keyword">select</span> user,host from user<span class="token punctuation">;</span>
+ALTER USER <span class="token string">'user'</span>@<span class="token string">'host'</span> IDENTIFIED BY <span class="token string">'!@#123QWe'</span><span class="token punctuation">;</span>
 ALTER USER <span class="token string">'root'</span>@<span class="token string">'localhost'</span> IDENTIFIED BY <span class="token string">'!@#123QWe'</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">## 配置中增加大小写不敏感：lower_case_table_names =1</span>
 vim /etc/my.cnf
@@ -531,6 +535,8 @@ vim /etc/my.cnf
 create user <span class="token string">'mysql'</span>@<span class="token string">'%'</span> identified by <span class="token string">'123qweQ!'</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">## 开放远程登录权限</span>
 GRANT ALL PRIVILEGES ON *.* TO <span class="token string">'mysql'</span>@<span class="token string">'%'</span> IDENTIFIED BY <span class="token string">'123qweQ!'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">## 收回权限</span>
+REVOKE ALL PRIVILEGES ON xxl_job.* FROM msptest<span class="token punctuation">;</span>
 FLUSH PRIVILEGES<span class="token punctuation">;</span></code></pre>
 <h3 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h3><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">## 下载redis</span>
 <span class="token function">wget</span> http://download.redis.io/releases/redis-4.0.2.tar.gz
@@ -569,6 +575,33 @@ vim 6379.conf
 <span class="token keyword">echo</span> <span class="token string">"---------------------------usercenterserver---------------------------"</span>
 <span class="token function">nohup</span> java -jar ~/downloads/user-center-1.0-SNAPSHOT.jar <span class="token operator">></span> user.out  2<span class="token operator">></span><span class="token operator">&amp;</span>1 <span class="token operator">&amp;</span>
 <span class="token function">nohup</span> java -jar ~/downloads/guns-main.jar <span class="token operator">></span> guns.out  2<span class="token operator">></span><span class="token operator">&amp;</span>1 <span class="token operator">&amp;</span></code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment" spellcheck="true">#应用信息</span>
+appName<span class="token operator">=</span><span class="token variable">$1</span>
+appExtension<span class="token operator">=</span>jar
+appProfile<span class="token operator">=</span><span class="token variable">$2</span>
+appPath<span class="token operator">=</span>/opt/msp
+logDate<span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +%Y%m%d<span class="token variable">`</span></span>
+
+<span class="token comment" spellcheck="true">#杀掉旧进程</span>
+PID<span class="token operator">=</span><span class="token punctuation">$(</span>jps -l <span class="token operator">|</span> <span class="token function">grep</span> <span class="token variable">${appName}</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$1</span>}'</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">$PID</span>"</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+   <span class="token keyword">echo</span> Application is already stopped
+<span class="token keyword">else</span>
+<span class="token keyword">echo</span> <span class="token function">kill</span> <span class="token variable">$PID</span>
+<span class="token function">kill</span> -9 <span class="token variable">$PID</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -f <span class="token variable">$appPath</span>/logs/<span class="token variable">$appName</span>-<span class="token variable">$logDate</span>.log <span class="token punctuation">]</span> 
+<span class="token keyword">then</span>
+<span class="token function">touch</span> <span class="token variable">$appPath</span>/logs/<span class="token variable">$appName</span>-<span class="token variable">$logDate</span>.log
+<span class="token keyword">fi</span>
+
+<span class="token comment" spellcheck="true">#起服务</span>
+<span class="token function">nohup</span> java -jar <span class="token variable">$appPath</span>/package/<span class="token variable">$appName</span><span class="token keyword">.</span><span class="token variable">$appExtension</span> --spring.profiles.active<span class="token operator">=</span><span class="token variable">$appProfile</span> <span class="token operator">></span> <span class="token variable">$appPath</span>/logs/<span class="token variable">$appName</span>-<span class="token variable">$logDate</span>.log 2<span class="token operator">></span><span class="token operator">&amp;</span>1 <span class="token operator">&amp;</span>
+<span class="token comment" spellcheck="true">#滚动启动日志</span>
+<span class="token function">tail</span> -f <span class="token variable">$appPath</span>/logs/<span class="token variable">$appName</span>-<span class="token variable">$logDate</span>.log</code></pre>
 <h3 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h3><ul>
 <li>auth资源服务器为什么只需要被user-center和gateway依赖</li>
 <li>SLK中间件调研</li>
@@ -658,8 +691,8 @@ parent
 
 
 
-查看pom的依赖tree
-
+pom
+dependenc
                         
                     </div>
                     <div class="publish-info">
@@ -854,7 +887,7 @@ $ nohup java -jar eureka-server-1.0-SNAPSHOT.jar &gt; eurek
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">27.6k</span>
+                <span class="white-color">30.1k</span>
             
 
             

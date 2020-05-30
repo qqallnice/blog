@@ -418,14 +418,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        500
+                        716
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -517,6 +517,74 @@ trusted<span class="token operator">-</span>host<span class="token operator">=</
 </ul>
 </li>
 <li><p>tkinter GUI</p>
+</li>
+</ul>
+<h3 id="shadowsocks"><a href="#shadowsocks" class="headerlink" title="shadowsocks"></a>shadowsocks</h3><ul>
+<li><p>yum install python3-pip</p>
+</li>
+<li><p>pip3 install shadowsocks</p>
+</li>
+<li><p>touch /etc/shadowsocks.json</p>
+</li>
+<li><p>配置如下</p>
+<pre><code>单端口：
+{
+"server":"0.0.0.0",            --服务器IP，直接用0.0.0.0也可
+"server_port":10001,            --端口端口
+"local_address": "127.0.0.1",  --本地地址，可省略
+"local_port":1080,             --本地端口，可省略
+"password":"msp20200324",         --密码
+"timeout":300,                 --超时时间，可省略
+"method":"aes-256-cfb",        --加密策略，有多重策略，具体自查
+}
+多端口：
+{
+  "server":"0.0.0.0",
+  "local_address":"127.0.0.1",
+  "local_port":1080,
+  "port_password":{           --每个端口对应一个密码
+      "1111":"password1",
+      "1112":"password2",
+      "1113":"password3"
+  },
+  "timeout":300,
+  "method":"aes-256-cfb",
+  "fast_open":false
+}</code></pre></li>
+<li><p>vim /usr/local/lib/python3.6/site-packages/shadowsocks/crypto/openssl.py</p>
+<ul>
+<li>:%s/cleanup/reset/</li>
+<li>:wq</li>
+</ul>
+</li>
+<li><p>ssserver -c /etc/shadowsocks.json -d start/stop/restart</p>
+</li>
+<li><p>配置自启动</p>
+<ul>
+<li><p>touch /etc/systemd/system/shadowsocks.service</p>
+</li>
+<li><p>配置如下</p>
+<pre><code>[Unit]
+Description=Shadowsocks
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/bin/ssserver -c /etc/shadowsocks.json
+
+[Install]
+WantedBy=multi-user.target</code></pre></li>
+<li><p>systemctl enable shadowsocks</p>
+</li>
+<li><p>systemctl start shadowsocks</p>
+</li>
+<li><p>systemctl status shadowsocks -l</p>
+</li>
+</ul>
+</li>
+<li><p>firewall-cmd –zone=public –add-port=10001/tcp –permanent</p>
+<ul>
+<li>开放端口</li>
+</ul>
 </li>
 </ul>
 <script>
@@ -786,7 +854,7 @@ www.ngrok.cc
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">27.6k</span>
+                <span class="white-color">30.1k</span>
             
 
             
